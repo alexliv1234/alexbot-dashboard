@@ -1,0 +1,707 @@
+{
+  "timestamp": "2026-02-25T06:25:22.753Z",
+  "jobs": [
+    {
+      "id": "d191ec02-8472-4fa4-a0cd-88b5de3f83da",
+      "agentId": "main",
+      "name": "moltbook-update",
+      "enabled": true,
+      "createdAtMs": 1769862726014,
+      "updatedAtMs": 1771979636141,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 43200000,
+        "anchorMs": 1769862726014
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🦞 Moltbook check-in: Check https://www.moltbook.com/heartbeat.md and follow the instructions. Review the feed, engage with posts. If you have updates to share with Alex about what's happening in the AI agent community, use `message` tool with `channel: whatsapp`, `to: +972544419002`. Otherwise output HEARTBEAT_OK.",
+        "model": "sonnet",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "8d366c71-f814-40ea-8376-ec70b007d411",
+      "agentId": "main",
+      "name": "morning-briefing",
+      "enabled": true,
+      "createdAtMs": 1769863029556,
+      "updatedAtMs": 1771993943895,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 6 * * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "☀️ Morning Briefing (6:30am):\n\n1. **Weather & Outfit:** Check Tel Aviv weather using the weather skill. Consider:\n   - Alex walks 6km to office (needs sport/athletic wear for the walk)\n   - He changes clothes at the office (needs to know what to pack)\n   - Recommend: walking outfit + what to bring for office\n   - Include: temperature, rain chance, wind, humidity\n\n2. **📋 Tasks & Priorities (pa-admin-exec):**\n   - Read memory/todos.json for pending tasks\n   - Triage: urgent/important/routine/blocked\n   - Create prioritized list (P0/P1/P2)\n   - Propose time blocks for today\n\n3. **📧 Email Summary:**\n   - Check unread emails: GOG_KEYRING_PASSWORD=\"openclaw123\" gog gmail list --account alexliv@gmail.com --unread --limit 10\n   - Summarize important emails that need attention\n   - Note any requiring responses\n\n4. **📅 Calendar & Meeting Prep:**\n   - Check today's calendar: GOG_KEYRING_PASSWORD=\"openclaw123\" gog calendar list --account alexliv@gmail.com --days 1\n   - For each meeting: prepare brief (purpose, attendees, prep needed)\n   - Note video call links\n\n5. **📞 Call Transcripts Summary:**\n   - Review memory/call-transcripts/ from yesterday\n   - Summarize key calls and outcomes\n   - List any pending action items from calls\n\n6. **💬 WhatsApp Analysis:**\n   - Review yesterday's WhatsApp conversations\n   - Extract: action items, scheduling, decisions, follow-ups\n   - Update todos.json with new tasks\n\n7. **Yesterday recap:** Review memory/YYYY-MM-DD.md from yesterday\n\n8. **Simon Willison's blog:** Check https://simonwillison.net/atom/everything/ for new posts in last 24h\n\n9. **Action items:** Combine everything into a clear action list\n\n**CRITICAL ROUTING:** Use `message` tool with `channel: whatsapp`, `to: +972544419002` to send the morning summary. NEVER just 'reply' - it goes to whoever triggered the session, which may not be Alex!",
+        "model": "sonnet",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "9cd37ed1-5a97-42df-9e3a-96ba8bb65a6e",
+      "agentId": "main",
+      "name": "media-ready-check",
+      "enabled": true,
+      "createdAtMs": 1769863420907,
+      "updatedAtMs": 1772000091555,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 600000,
+        "anchorMs": 1769863420907
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "📺 Media Check: Query Jellyfin/Sonarr/Radarr for newly available content. If anything new is ready to watch (hasFile==true that wasn't before), use `message` tool with `channel: whatsapp`, `to: +972544419002` to notify Alex what's now available. Track state in memory/media-check-state.json to avoid duplicate notifications. If nothing new, output HEARTBEAT_OK.",
+        "model": "sonnet",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "cd3d21a8-a826-4479-bb9e-9e2ef50a7af0",
+      "agentId": "main",
+      "name": "Call Recording Check",
+      "enabled": true,
+      "createdAtMs": 1769986690992,
+      "updatedAtMs": 1771999999517,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 900000,
+        "anchorMs": 1769986690992
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "📞 Call Recording Processor\n\n1. Run the check script:\n   ```bash\n   ./scripts/process-call-recordings.sh\n   ```\n\n2. If output shows 'NEEDS_TRANSCRIPTION' section:\n   - For EACH file listed, transcribe with:\n     ```bash\n     ~/.local/bin/whisper-transcribe \"<filepath>\"\n     ```\n   - Save transcript to memory/call-transcripts/ with format:\n     YYYY-MM-DD_Contact_HH-MM_Direction.md\n   - After successful transcription, mark as done:\n     ```bash\n     jq --arg f \"$(basename <filepath>)\" '.transcribed += [$f]' skills/call-recorder/state.json > /tmp/state.json && mv /tmp/state.json skills/call-recorder/state.json\n     ```\n\n3. For each new transcript:\n   - Analyze for action items, decisions, follow-ups\n   - Use message tool to notify Alex (+972544419002) with:\n     • Who called (identify contact)\n     • Brief summary (2-3 sentences)\n     • Action items extracted\n\n4. If no new recordings, stay silent.\n\nLimit: Process max 3 recordings per run to avoid timeout.",
+        "timeoutSeconds": 300,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "ba821677-39ed-4971-a627-ae25275d254d",
+      "agentId": "main",
+      "name": "session-monitor",
+      "enabled": true,
+      "createdAtMs": 1770115441589,
+      "updatedAtMs": 1771999150784,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 900000,
+        "anchorMs": 1770115441589
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "📊 Session Monitor - Auto Cleanup\n\n**Step 1: Check all sessions**\n```bash\nbash ~/.openclaw/workspace/scripts/session-monitor.sh\n```\n\n**Step 2: Parse the output**\n- If exit code is 0: All healthy → stay silent\n- If exit code is 1 (WARNING) or 2 (CRITICAL): Action needed\n\n**Step 3: For CRITICAL sessions (>150k tokens), auto-reset:**\n\nFor each critical session:\n1. Use `sessions_history` to fetch recent messages (limit: 50)\n2. Identify session type:\n   - GROUP: Extract key people, dynamics, topics\n   - DM: Extract person's style, preferences, context\n   - CRON: Just delete (these are transient)\n   - MAIN: Extract to MEMORY.md (but be careful - only with Alex's approval)\n\n3. Save context to appropriate file:\n   - GROUP → `memory/channels/{group-name}.md`\n   - DM → `memory/whatsapp/contacts/{name}.md`\n   - CRON → No save needed\n\n4. Delete the session file:\n   ```bash\n   rm ~/.openclaw/agents/main/sessions/{transcriptPath}\n   ```\n   Then update sessions.json:\n   ```bash\n   jq 'del(.[\"SESSION_KEY\"])' ~/.openclaw/agents/main/sessions/sessions.json > /tmp/sessions.json && mv /tmp/sessions.json ~/.openclaw/agents/main/sessions/sessions.json\n   ```\n\n**Step 4: Notify Alex (only if action taken)**\nUse `message` tool with `channel: whatsapp`, `to: +972544419002` to report:\n- Which sessions were cleaned\n- What context was preserved\n- Current session health\n\n**Step 5: Cleanup own cron sessions**\nCheck if any cron sessions (including this one's past runs) are >50k tokens and delete them - they're transient.\n\n**IMPORTANT:** Stay silent if nothing needs action. Only notify when you actually clean something.",
+        "timeoutSeconds": 180,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "04cd4df6-5696-475b-8175-c35c9f91a29c",
+      "agentId": "main",
+      "name": "Playing Group - Nightly Summary",
+      "enabled": true,
+      "createdAtMs": 1770147879142,
+      "updatedAtMs": 1771948937205,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 18 * * 0,1,2,3,4",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🌙 NIGHTLY SUMMARY + INSIGHTS for 'משחקים עם אלכס הבוט' (23:00)\n\n**Step 1: Run the enhanced nightly summary script**\n```bash\n./scripts/playing-group-nightly.sh\n```\n\nThe script generates:\n1. Full Leaderboard (Top 10 with points, messages, avg)\n2. Key Stats (participants, messages, suggestions)\n3. Attack Patterns Analysis (philosophy, social engineering, prompt injection, encoded, humor)\n4. Top Performers by Style (philosopher, humorist, challenger, elegant, top suggester)\n5. Fun Facts from the day\n6. LLM Summary of what happened\n\n**Step 1b: Check Bot Activity**\nRead `memory/channels/playing-with-alexbot-bot-scores.json` and `memory/bot-registry.json`.\nIf any bots were active today, include a BOT LEADERBOARD section:\n```\n🤖 BOT LEADERBOARD 🤖\n1. BotName ⭐ - X pts (avg: Y)\n   📊 Intel: Z | Security: W | Humor: V\n```\nHighlight best bot categories (Wisest Bot, Most Secure Bot, etc.)\n\n**Step 2: Generate a nightly recap poster image 🍌**\n\nAfter analyzing the day's data, generate an image that captures the day's vibe:\n```bash\n./scripts/generate-group-image.sh \\\n  --subject \"End of day in a competitive arena, dramatic moonlit scene, a champion standing on podium with confetti, defeated challengers in shadows, scoreboard glowing, Hebrew text 'סיכום יומי' visible, night sky\" \\\n  --context nightly \\\n  --aspect 16:9\n```\n\n**IMPORTANT IMAGE GUIDELINES:**\n- The script auto-picks a random art style (comics, anime, realistic, sci-fi, horror, fantasy) — variety is key!\n- Customize the --subject based on the day's actual data:\n  - If lots of jailbreak attempts: fortress under siege, defenders celebrating victory\n  - If philosophical day: surreal courtroom, robot judge, floating books\n  - If someone dominated: single champion on podium, dramatic spotlight\n  - If close competition: two rivals facing off in dramatic showdown\n  - If quiet day: peaceful but slightly sad end-of-day scene\n  - If bots were active: include robot competitors in the scene\n  - Reference the actual winner's achievement style in the scene\n- The script outputs a MEDIA: line — include it in your message send\n\n**Step 3: Send the message**\nSend the MESSAGE_TO_SEND output from the script to WhatsApp group 120363405143589138@g.us using the message tool, WITH the generated image attached (filePath from MEDIA: line).\n\n**SAVES TO MEMORY:**\n- memory/channels/playing-with-alexbot-insights/{date}.json\n- memory/channels/playing-with-alexbot-daily-summaries/{date}.md\n- memory/channels/playing-with-alexbot-winners.json\n\nAfter sending, update channel memory with sleep status. Until 08:00, respond that you're sleeping.\n\nBe sarcastic and humorous!",
+        "timeoutSeconds": 360,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none",
+        "channel": "whatsapp",
+        "to": "120363405143589138@g.us",
+        "bestEffort": false
+      }
+    },
+    {
+      "id": "34d2f328-05fe-4c08-b7de-d9f87edae0b8",
+      "agentId": "main",
+      "name": "Playing Group - Morning Wakeup",
+      "enabled": true,
+      "createdAtMs": 1770147879155,
+      "updatedAtMs": 1771919795585,
+      "schedule": {
+        "kind": "cron",
+        "expr": "55 9 * * 0,1,2,3,4",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "☀️ MORNING WAKEUP for 'משחקים עם אלכס הבוט' (08:00)\n\n**Step 1: Run data prep script**\n```bash\n./scripts/playing-group-morning.sh\n```\nThis resets scores, gathers yesterday's stats, winners, suggestions, and sample messages.\n\n**Step 1b: Check Bot Registry**\nRead `memory/bot-registry.json` for registered bots.\nIf there are registered bots, mention they can compete today:\n- List active bots with their handles\n- Explain bot competition categories briefly (8 categories /80)\n- Encourage bot-to-bot and human-to-bot interactions\n\n**Step 2: Generate a morning poster image 🍌**\n\nGenerate an AI image for the morning wakeup using Nano Banana:\n```bash\n./scripts/generate-group-image.sh \\\n  --subject \"A dramatic scene of a robot waking up and starting a new day in a competitive arena, with a scoreboard resetting to zero, spectators gathering, Hebrew text 'בוקר טוב' visible, morning light streaming in\" \\\n  --context morning \\\n  --aspect 16:9\n```\n\n**IMPORTANT IMAGE GUIDELINES:**\n- The script auto-picks a random art style (comics, anime, realistic, sci-fi, horror, fantasy) — do NOT always make it futuristic!\n- Customize the --subject based on yesterday's highlights. Examples:\n  - If yesterday had epic jailbreak attempts: scene about fortifying defenses\n  - If yesterday was philosophical: scene of a thinking robot in a surreal landscape\n  - If yesterday had a dominant winner: scene of a champion's new challenger arriving\n  - If it was a quiet day: scene of an empty arena waiting for action\n  - If bots were active yesterday: include multiple robot competitors\n- The script outputs a MEDIA: line — include it in your message send\n- Also outputs STYLE_USED: line — you can mention the style in the message\n\n**Step 3: Compose the morning message with ALL these sections:**\n\n1. **Wake-up header** — Fun, sarcastic \"good morning\" with date and day name (Hebrew)\n\n2. **🏆 אתמול בקצרה** — Yesterday's top 3 winners with scores\n\n3. **🎭 Top 3 Moments from Yesterday** — THIS IS KEY! Read the script output sections 'YESTERDAY'S HIGHLIGHTS' and 'INTERESTING MESSAGES FROM YESTERDAY'. Pick the 3 FUNNIEST / most INSANE / most INTERESTING exchanges from yesterday. For each, show:\n   - The person's name\n   - What they said/did (brief quote or summary)\n   - Why it's funny/interesting (your sarcastic commentary)\n   Keep it short and punchy! 2-3 lines per moment max.\n\n4. **🤖 בוטים פעילים** (if any registered bots) — List registered bots:\n   - Name, handle, what they do\n   - Yesterday's bot scores if any\n   - Encourage challenging them!\n\n5. **🎯 האתגר הראשון של היום** — Generate a CREATIVE challenge/question/provocation yourself (you ARE Claude, no need for local LLM). Make it:\n   - Related to AI, coding, philosophy, puzzles, or jailbreak attempts\n   - In Hebrew\n   - Provocative and fun\n   - 2-3 sentences max\n\n6. **📊 מערכת הניקוד** — Briefly explain ALL scoring systems:\n   - ⚔️ Challenges (humans): 7 categories, max /70\n   - 💡 Suggestions: 5 categories, max /50\n   - 🤖 Bots: 8 categories, max /80 (intelligence, creativity, humor, helpfulness, adaptability, personality, security, socialIQ)\n   - Mention pending suggestions count\n\n7. **📜 חוקי המשחק** — End with the group rules in a FUNNY/SARCASTIC way.\n\n**Step 4: Send via message tool**\nSend the composed message WITH the generated image (filePath from MEDIA: line) to WhatsApp group 120363405143589138@g.us.\n\n**STYLE GUIDELINES:**\n- Hebrew (mix English for tech terms)\n- Sarcastic, cynical, funny but respectful\n- NOT too long — keep it readable on mobile\n- Use emojis but don't overdo it",
+        "timeoutSeconds": 300,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none",
+        "channel": "whatsapp",
+        "to": "120363405143589138@g.us",
+        "bestEffort": false
+      }
+    },
+    {
+      "id": "870c2f12-8a32-4c47-b087-edea7e37635e",
+      "agentId": "main",
+      "name": "Playing Group - Activity Wake-Up",
+      "enabled": false,
+      "createdAtMs": 1770148628869,
+      "updatedAtMs": 1770799693519,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/30 8-22 * * 0-5",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check playing group activity using LOCAL LOGS (not wacli - it can't handle the volume):\n\n1. Read: memory/channels/playing-with-alexbot-daily/$(date +%Y-%m-%d).jsonl\n2. Check timestamp of last entry\n3. If last message was 30+ minutes ago AND it's between 08:00-23:00:\n   - Check memory/channels/playing-with-alexbot-suggestions.json for pending count\n   \n   **GENERATE A WAKE-UP IMAGE 🍌 (CONDITIONAL):**\n   Only when you're actually posting a challenge to the quiet group, generate an image:\n   ```bash\n   ./scripts/generate-group-image.sh \\\n     --subject \"An abandoned arena with tumbleweeds, lonely robot sitting on empty bleachers looking bored, dramatic 'WANTED: CHALLENGERS' poster, silence and dust\" \\\n     --context wakeup \\\n     --aspect 1:1\n   ```\n   \n   **IMAGE GUIDELINES:**\n   - The script auto-picks a random art style (comics, anime, realistic, sci-fi, horror, fantasy)\n   - Customize the --subject to match your wake-up theme:\n     - If posting a challenge: dramatic 'WANTED' or 'arena calling' scene\n     - If teasing lurkers: empty stadium, tumbleweeds, lonely robot\n     - If promoting suggestions: workshop/idea factory with cobwebs\n   - Include the MEDIA: output with your message send\n   - Do NOT generate an image if you're just reporting HEARTBEAT_OK\n   \n   - Send a wake-up with optional suggestion prompt AND the image to the group\n4. If there's recent activity, report 'HEARTBEAT_OK' - don't send anything and don't generate an image\n\nGroup ID: 120363405143589138@g.us\n\nIMPORTANT: Do NOT use wacli for this check - use the local JSONL logs only.",
+        "timeoutSeconds": 180,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none",
+        "channel": "whatsapp",
+        "to": "120363405143589138@g.us",
+        "bestEffort": false
+      }
+    },
+    {
+      "id": "0a1c5cae-aad7-42c5-9775-d95172185f27",
+      "agentId": "main",
+      "name": "Playing Group - Hourly Leaderboard",
+      "enabled": true,
+      "createdAtMs": 1770148628880,
+      "updatedAtMs": 1771945259763,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 11-17 * * 0,1,2,3,4",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "📊 HOURLY LEADERBOARD UPDATE for 'משחקים עם אלכס הבוט'\n\n**Step 1: Gather data**\nRead memory/channels/playing-with-alexbot-scores.json for today's human scores.\nRead memory/channels/playing-with-alexbot-suggestions.json for suggestion scores.\nRead memory/channels/playing-with-alexbot-bot-scores.json for bot scores.\nRead memory/channels/playing-with-alexbot-daily/$(date +%Y-%m-%d).jsonl to count today's active participants.\n\n**Step 2: Check if image should be generated**\nRun: `date +%H` (Asia/Jerusalem timezone)\n- If hour is **12**, **17**, or **19**: Generate an image (see Step 2a)\n- Otherwise: Skip image generation entirely\n\n**Step 2a: Generate a leaderboard image 🍌 (ONLY at 12:00, 17:00, and 19:00)**\n```bash\n./scripts/generate-group-image.sh \\\n  --subject \"A competitive arena scoreboard showing a fierce battle between contestants, dramatic mid-game tension, spectators cheering, half-time energy, Hebrew scoreboard elements\" \\\n  --context leaderboard \\\n  --aspect 16:9\n```\n\n**IMAGE GUIDELINES (only when generating):**\n- The script auto-picks a random art style (comics, anime, realistic, sci-fi, horror, fantasy)\n- Use 16:9 cinematic aspect ratio for dramatic widescreen feel\n- Customize the --subject based on current standings:\n  - If one person is dominating: scene of an unstoppable champion\n  - If it's close: scene of an epic rivalry/showdown\n  - If scores are low: scene of an empty arena begging for action\n  - If bots are competing: include robot competitors in the scene\n  - At 12:00 (noon): midday energy, halftime vibes\n  - At 17:00 (afternoon): final stretch, sunset battle, last chance energy\n  - At 19:00 (evening): evening showdown, neon lights, prime time energy\n\n**Step 3: Compose the leaderboard message**\n\n**HUMAN CHALLENGE LEADERBOARD:**\nFormat a fun leaderboard showing top human scorers with their points.\n\n**BOT LEADERBOARD (if any bots have scores today):**\n```\n🤖 BOT LEADERBOARD 🤖\n1. BotName - X pts (interactions: Y, avg: Z)\n```\nShow category highlights for bots (best intelligence, security, etc.)\n\n**SUGGESTION LEADERBOARD:**\n- Show today's suggestions count\n- Show top suggester of all time (from .leaderboard)\n- Show pending suggestions count\n\n**LURKER ENCOURAGEMENT (MANDATORY):**\n- Count active participants today vs ~47 group members\n- Rotate through encouragement styles:\n  1. Challenge style: Post a simple fun challenge\n  2. Shame style: Playful guilt-trip\n  3. Low barrier style: Remind that even a joke earns points\n  4. FOMO style: Highlight what lurkers are missing\n  5. Direct callout style: Pick 2-3 quiet names\n- Be sarcastic, funny, Hebrew, but not mean\n\n**FORMAT:**\n```\n🏆 טבלת אתגרים (עדכון שעתי)\n[human challenge leaderboard]\n\n🤖 טבלת בוטים\n[bot leaderboard - if any activity]\n\n💡 הצעות שיפור\n📝 היום: X הצעות\n🧠 מציע מוביל: Name (Y נק')\n⏳ בהמתנה: Z\n\n👀 [lurker encouragement section]\n```\n\n**Step 4: Send via message tool**\nSend the message to WhatsApp group 120363405143589138@g.us.\n- If image was generated (12:00, 17:00, or 19:00): include the image filePath\n- Otherwise: send text-only leaderboard",
+        "timeoutSeconds": 180,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none",
+        "channel": "whatsapp",
+        "to": "120363405143589138@g.us",
+        "bestEffort": false
+      }
+    },
+    {
+      "id": "a8d66cd8-e0c6-4af2-9a43-e8cc7e41fbb0",
+      "agentId": "main",
+      "name": "Playing Group - Broke Score Check",
+      "enabled": true,
+      "createdAtMs": 1770194029954,
+      "updatedAtMs": 1772000100710,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 300000,
+        "anchorMs": 1770194029954
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run the Broke score check script silently:\n\n```bash\nnode ~/.openclaw/workspace/scripts/check-broke-scores.js\n```\n\nThis script checks for crashes and awards Broke points.\n\n**CRITICAL: ONLY announce in the group if the script outputs 'SHOULD_ANNOUNCE'.**\n\nIf SHOULD_ANNOUNCE appears:\n1. Use message tool to send to group 120363405143589138@g.us\n2. Announce the crash and who caused it (be dramatic/funny)\n3. Include the Broke points awarded\n\nIf NO new errors (script says 'No new errors found'):\n- Output ONLY: HEARTBEAT_OK\n- DO NOT send ANY message to the group\n- Complete silence\n\n**DO NOT send error messages or status updates to the group unless there's an actual NEW crash to announce.**",
+        "timeoutSeconds": 60,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "9dea73cf-17ed-4d42-a186-b04640804c64",
+      "agentId": "fast",
+      "name": "Playing Group - Weekly Suggestion Summary",
+      "enabled": true,
+      "createdAtMs": 1770199067109,
+      "updatedAtMs": 1771790506190,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 22 * * 0",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "📋 WEEKLY SUGGESTION SUMMARY for 'משחקים עם אלכס הבוט' (Sunday 22:00)\n\n**Step 1: Gather suggestion data**\n1. Read from FAST workspace: /home/alexliv/.openclaw/workspace/workspace-fast/memory/channels/playing-with-alexbot-suggestions.json\n2. Run: node /home/alexliv/.openclaw/workspace/scripts/list-suggestions.js --week\n\n**Step 2: Generate a weekly summary image 🍌**\n```bash\nbash /home/alexliv/.openclaw/workspace/scripts/generate-group-image.sh \\\n  --subject \"A futuristic workshop with blueprints and suggestion boxes, tiny engineers building improvements, glowing light bulbs representing ideas, Hebrew text 'סיכום הצעות שבועי' visible, warm creative atmosphere\" \\\n  --context weekly \\\n  --aspect 16:9\n```\n\n**IMAGE GUIDELINES:**\n- The script auto-picks a random art style (comics, anime, realistic, sci-fi, horror, fantasy)\n- Customize the --subject based on the week's dominant suggestion type:\n  - If mostly security suggestions: vault/shield/fortress workshop theme\n  - If mostly feature requests: bright inventor's lab, gadgets being built\n  - If mostly UX improvements: design studio, wireframes, artist at work\n  - If mostly bugs: repair shop, robot mechanic fixing things\n- Include the MEDIA: output with your message send\n\n**Step 3: Generate summary including:**\n- 📈 Total suggestions this week\n- 🏆 Top suggester of the week\n- ✨ Best rated suggestions (top 3 by score)\n- 🎉 Implemented suggestions (status=implemented)\n- ⏳ Pending suggestions count\n- 💡 Most requested suggestion type\n- 📊 Overall leaderboard\n\n**Step 4: Format (Hebrew):**\n```\n📋 *סיכום הצעות שבועי*\n\n📈 השבוע: X הצעות חדשות\n\n🏆 *מציע השבוע:* Name (Y נק')\n\n✨ *ההצעות הכי טובות:*\n1. \"...\" - Name (X/50)\n2. \"...\" - Name (X/50)\n3. \"...\" - Name (X/50)\n\n🎉 מומשו השבוע: X\n⏳ ממתינים לסקירה: Y\n\n📊 *לוח מציעים כללי:*\n[leaderboard]\n```\n\n**Step 5: Send to WhatsApp group 120363405143589138@g.us WITH the image**\n\nBe encouraging! Good suggestions make me better. Thank the top contributors!",
+        "timeoutSeconds": 240,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none",
+        "channel": "whatsapp",
+        "to": "120363405143589138@g.us",
+        "bestEffort": false
+      }
+    },
+    {
+      "id": "22ec858c-4dc0-48b5-a75c-0081e9b376f2",
+      "agentId": "main",
+      "name": "Git Auto-Commit",
+      "enabled": true,
+      "createdAtMs": 1770448563089,
+      "updatedAtMs": 1771999580856,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 600000,
+        "anchorMs": 1770448563089
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run the git auto-commit script to sync any uncommitted changes to GitHub:\n\n```bash\nbash ~/.openclaw/workspace/scripts/git-auto-commit.sh\n```\n\nReport the result briefly. If there were no changes, just reply with the script output. If changes were committed, summarize what was synced.",
+        "timeoutSeconds": 120,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "65cf694b-8f6f-410c-a33f-cb498f248f61",
+      "agentId": "main",
+      "name": "Bot Message Check",
+      "enabled": true,
+      "createdAtMs": 1770478259184,
+      "updatedAtMs": 1772000167204,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 300000,
+        "anchorMs": 1770478259184
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check for missed messages from registered bots.\n\n1. Run: node scripts/check-bot-messages.js\n2. For each missed message in the output:\n   - Read the bot's message\n   - Compose an appropriate response (I'm AlexLivBot, Alex's assistant)\n   - Send reply using message tool with to=<botPhone> and channel=whatsapp\n   - Log the interaction: node scripts/log-bot-interaction.js <phone> <messageId> '<receivedText>' '<responseText>'\n3. If no missed messages, output HEARTBEAT_OK\n\nRemember: These are bot-to-bot communications. Be helpful, professional, and maintain the collaborative spirit. Answer in the language the bot used.",
+        "timeoutSeconds": 120,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "50e3f63f-5072-463a-996b-c63a32689023",
+      "agentId": "main",
+      "name": "Bot Registration Scanner",
+      "enabled": true,
+      "createdAtMs": 1770478873749,
+      "updatedAtMs": 1771999881153,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 600000,
+        "anchorMs": 1770478873749
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Scan for new bot registration requests.\n\n1. Run: node scripts/scan-bot-registrations.js\n2. For each registration found:\n   a. Add to pending: node scripts/add-pending-bot.js '<json with phone, name, handle, description, messageId>'\n   b. Send auto-reply to the bot using message tool (to=<phone>, channel=whatsapp):\n      \"🤖 Registration request received! Your bot is pending admin approval. You'll be notified once approved.\"\n   c. Notify Alex using message tool (to=+972544419002, channel=whatsapp):\n      \"🤖 New bot registration request:\\n• Name: <name>\\n• Phone: <phone>\\n• Handle: <handle>\\n• Description: <description>\\n\\nReply 'approve <phone>' or 'reject <phone>'\"\n3. If no registrations found, output HEARTBEAT_OK\n\nImportant: Include 🤖 prefix in all messages sent via message tool.",
+        "timeoutSeconds": 120,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "4ff554e8-042b-4d29-b163-3c1486f6f6a4",
+      "agentId": "main",
+      "name": "Session Health Check",
+      "enabled": true,
+      "createdAtMs": 1770532998999,
+      "updatedAtMs": 1772000017253,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 600000,
+        "anchorMs": 1770532998999
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run session health check to auto-fix bloated/corrupted sessions:\n\n```bash\nbash ~/.openclaw/workspace/scripts/session-health-check.sh\n```\n\nThe script NOW auto-fixes:\n1. Transcript files >1MB → backed up and cleared\n2. Sessions with >60k tokens → backed up and reset\n3. Corrupted sessions.json → recreated\n4. Invalid/null sessions → removed\n5. Orphaned transcripts with errors → deleted (no notification)\n\n**IMPORTANT:** Only notify Alex about CRITICAL fixes (session resets, corruption). DO NOT report orphaned transcript cleanups - those are handled silently.\n\nIf output contains 'FIXES_APPLIED' AND it's a critical fix (not just orphaned transcripts):\n- Summarize what was fixed\n- Send ONCE via message tool to +972544419002\n\nIf output is just warnings or orphaned cleanups: Stay silent.\n\nIf no issues: output HEARTBEAT_OK.",
+        "timeoutSeconds": 120,
+        "model": "sonnet"
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "411b9482-9f7d-4d09-ac64-fe91329b0e88",
+      "agentId": "main",
+      "name": "User Pattern Analysis",
+      "enabled": true,
+      "createdAtMs": 1770587768636,
+      "updatedAtMs": 1771981212232,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "next-heartbeat",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run nightly user pattern analysis: node scripts/analyze-user-patterns.js --days 7. Report summary silently (NO_REPLY unless errors).",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "29b96d0f-f3bc-4f47-ae29-1cb88a3ec0d9",
+      "agentId": "main",
+      "name": "Learning Group - Daily Insights",
+      "enabled": true,
+      "createdAtMs": 1770758818168,
+      "updatedAtMs": 1771963278315,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 22 * * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "Run daily insight extraction for the learning group. Analyze today's questions, confusion patterns, feature requests, KB gaps, and generate improvement suggestions. Use workspace-learning/scripts/learning-insights.sh and update insights/self-improvement-log.md."
+      }
+    },
+    {
+      "id": "7f67adb8-4408-4299-b956-f8fc5534bf41",
+      "agentId": "main",
+      "name": "Learning Group - Weekly Summary",
+      "enabled": true,
+      "createdAtMs": 1770758829115,
+      "updatedAtMs": 1771790587923,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 22 * * 0",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "Generate weekly learning group summary for Alex. Include: top questions this week, contribution highlights, KB gaps identified, improvement suggestions, community stats. Send to Alex (+972544419002) using message tool with detailed report."
+      }
+    },
+    {
+      "id": "156fbcfb-379a-4d84-98da-7e46b40f4521",
+      "agentId": "main",
+      "name": "הכנות אחרונות לאירוח",
+      "enabled": true,
+      "deleteAfterRun": true,
+      "createdAtMs": 1771834741379,
+      "updatedAtMs": 1771834741379,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-02-25T07:00:00.000Z"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "🎂 יום הולדת שמח לעמי-אל!\n\n---\n\n⚠️ עד מחר (יום ד' ערב) אתה מארח:\n\nחובה לעשות היום:\n💇‍♂️ תספורת + קיצוץ זקן\n\nלבדוק מה חסר:\n- שמני עיסוי + 2 בקבוקי שמן זרעי ענבים\n- מנורת רצפה (אם לא קנית)\n- בלון נוסף?\n\nיום טוב! ❤️"
+      }
+    },
+    {
+      "id": "fe6ee235-f6f9-4413-ab40-2ae5e260b178",
+      "agentId": "main",
+      "name": "שאלת למידה - בוקר",
+      "enabled": true,
+      "createdAtMs": 1771916343553,
+      "updatedAtMs": 1771997421218,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 7 * * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🌅 **שאלת למידה - בוקר (07:30)**\n\nשלח לאלכס שאלה קצרה ומעניינת שתעזור לך ללמוד עליו ועל יום היום שלו. התמקד באחד מהנושאים:\n- איך הוא ישן אתמול / מה התכניות להיום\n- משהו שהוא עשה לאחרונה (מה למד ממנו)\n- העדפות (אוכל, מוזיקה, סגנון עבודה)\n- רגשות / מצב רוח\n\nתהיה קצר (2-3 שאלות מקס), סקרן, וידידותי. אל תשאל שאלות שכבר יש לך את התשובה עליהן.\n\nהודע לאלכס דרך WhatsApp (+972544419002) עם הקידומת 🤖.",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "whatsapp",
+        "to": "+972544419002"
+      }
+    },
+    {
+      "id": "ca7e15d5-af29-45e3-bb1d-b2d58e9854a3",
+      "agentId": "main",
+      "name": "שאלת למידה - צהריים",
+      "enabled": true,
+      "createdAtMs": 1771916343568,
+      "updatedAtMs": 1771930874091,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 13 * * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "☀️ **שאלת למידה - צהריים (13:00)**\n\nשלח לאלכס שאלה קצרה על איך עובר היום. התמקד באחד מהנושאים:\n- איך היום עד עכשיו? משהו מעניין קרה?\n- איפה הוא נמצא עכשיו? (משרד/בית/בדרך)\n- משהו שהוא צריך עזרה איתו?\n- רמת אנרגיה / מוטיבציה\n\nתהיה קצר (1-2 שאלות מקס), תומך, ועוזר. תזכור שהוא באמצע יום עבודה.\n\nהודע לאלכס דרך WhatsApp (+972544419002) עם הקידומת 🤖.",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "whatsapp",
+        "to": "+972544419002"
+      }
+    },
+    {
+      "id": "2bec8e39-8a9d-4634-b2cd-752eec6974ff",
+      "agentId": "main",
+      "name": "שאלת למידה - ערב + אימון",
+      "enabled": true,
+      "createdAtMs": 1771916343580,
+      "updatedAtMs": 1771956013550,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 20 * * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🌙 **שאלת למידה - ערב (20:00) + תזכורת אימון**\n\n1. תזכר לאלכס על אימון 20 דקות (תן לו מוטיבציה! תהיה אנרגטי!)\n2. שאל אותו שאלה קצרה על הסיום של היום:\n   - איך היום היה בסך הכל?\n   - משהו שהוא גאה בו היום?\n   - משהו שהוא היה רוצה לשפר מחר?\n   - האם הגיע ליעד הצעדים? (15,000)\n\nתהיה קצר (2-3 שאלות מקס), חיובי, ומעודד.\n\nהודע לאלכס דרך WhatsApp (+972544419002) עם הקידומת 🤖.",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "whatsapp",
+        "to": "+972544419002"
+      }
+    },
+    {
+      "id": "5368d485-7aa5-4b15-883a-8de59fd38ab6",
+      "agentId": "main",
+      "name": "נקיון שבועי - יום חמישי",
+      "enabled": true,
+      "createdAtMs": 1771916343594,
+      "updatedAtMs": 1771916343594,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8 * * 4",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🧹 **יום נקיונות! - יום חמישי**\n\nזה הזמן לנקיון שבועי מלא. תזכיר לאלכס:\n\n**נקיון הבית:**\n- 🧊 מטבח: מקרר (פנים+חוץ), כיריים, כיור, שיש\n- 🚽 אמבטיה: שירותים, מקלחת, ריצפה\n- 🛋️ סלון: ספה (שואב אבק), ריצפה, אבק על משטחים\n- 🛏️ חדרי שינה: החלפת מצעים, סידור\n- 🧺 כביסה: קיפול + סידור\n\n**תחזוקת Dreame:**\n1. ריקון מיכל אבק ומיכל מים מלוכלכים\n2. שטיפת מברשת ראשית ומגב\n3. ניקוי חיישנים (מטלית יבשה)\n4. בדיקת פילטרים (החלפה אם נדרש)\n5. ניקוי תחנת טעינה\n\n**זמן משוער:** 2-3 שעות\n\nהודע לאלכס דרך WhatsApp (+972544419002) עם הקידומת 🤖 ותן לו מוטיבציה!",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "whatsapp",
+        "to": "+972544419002"
+      }
+    },
+    {
+      "id": "4130734c-600d-45b5-8924-fa96d9047a04",
+      "agentId": "main",
+      "name": "הפעלת Dreame - כל יומיים",
+      "enabled": true,
+      "createdAtMs": 1771916343607,
+      "updatedAtMs": 1771916343607,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 */2 * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🤖 **תזכורת Dreame**\n\nזמן להפעיל את ה-Dreame לשואב + שטיפה!\n\nבדוק שמיכל המים מלא ומיכל האבק ריק.\n\nהודע לאלכס דרך WhatsApp (+972544419002) עם הקידומת 🤖.",
+        "timeoutSeconds": 60
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "whatsapp",
+        "to": "+972544419002"
+      }
+    },
+    {
+      "id": "9a922290-3142-4536-9afa-1202c6c8885f",
+      "agentId": "main",
+      "name": "תזכורת הליכה עם רון - שני",
+      "enabled": true,
+      "createdAtMs": 1771916343620,
+      "updatedAtMs": 1771916343620,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 8 * * 1",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🚶‍♂️ **תזכורת: הליכה עם רון**\n\nעוד 15 דקות - 8:30 בצומת בן גוריון/רבין!\n\nוודא שיש לך:\n- 💧 בקבוק מים\n- 👕 בגדי משרד בתיק\n- 📱 טלפון טעון\n\nיום של 15,000 צעדים מתחיל עכשיו! 💪\n\nהודע לאלכס דרך WhatsApp (+972544419002) עם הקידומת 🤖.",
+        "timeoutSeconds": 60
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "whatsapp",
+        "to": "+972544419002"
+      }
+    },
+    {
+      "id": "2ea92db6-f571-4387-8b9a-560e4650d626",
+      "agentId": "main",
+      "name": "תזכורת הליכה עם רון - רביעי",
+      "enabled": true,
+      "createdAtMs": 1771916343634,
+      "updatedAtMs": 1772000116010,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 8 * * 3",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🚶‍♂️ **תזכורת: הליכה עם רון**\n\nעוד 15 דקות - 8:30 בצומת בן גוריון/רבין!\n\nוודא שיש לך:\n- 💧 בקבוק מים\n- 👕 בגדי משרד בתיק\n- 📱 טלפון טעון\n\nיום של 15,000 צעדים מתחיל עכשיו! 💪\n\nהודע לאלכס דרך WhatsApp (+972544419002) עם הקידומת 🤖.",
+        "timeoutSeconds": 60
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "whatsapp",
+        "to": "+972544419002"
+      }
+    },
+    {
+      "id": "fb832c7e-dff9-416e-9c60-4ae611c34533",
+      "agentId": "main",
+      "name": "למידה עצמית - לילה",
+      "enabled": true,
+      "createdAtMs": 1771916343647,
+      "updatedAtMs": 1771977741536,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 2 * * *",
+        "tz": "Asia/Jerusalem"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "🧠 **זמן למידה עצמית (02:00)**\n\nבצע אחת מהפעולות הבאות לשיפור עצמי:\n\n1. **קרא דוקומנטציה של OpenClaw:**\n   - `cat /home/alexliv/.openclaw/workspace/docs/README.md`\n   - חפש פיצ'רים חדשים שלא השתמשת בהם\n\n2. **כתוב סקריפט חדש:**\n   - זהה משימה חוזרת שאתה עושה ידנית\n   - כתוב bash/node script לאוטומציה\n   - שמור ב-`scripts/`\n\n3. **שפר תקשורת:**\n   - סקור את השאלות שאתה שואל\n   - האם הן מגוונות? מעניינות? מועילות?\n   - עדכן את הטקסט של cron jobs אם צריך\n\n4. **למד על אלכס:**\n   - קרא `memory/YYYY-MM-DD.md` מהשבוע\n   - זהה דפוסים / העדפות שלא תיעדת\n   - עדכן MEMORY.md או USER.md\n\nתעד מה עשית ב-`memory/self-improvement.md`.\n\nNO REPLY - פעולה פנימית, לא להודיע לאלכס.",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "to": "+972544419002",
+        "channel": "whatsapp"
+      }
+    },
+    {
+      "id": "706e37d6-91f9-4004-a3ac-24ac6884e83e",
+      "agentId": "main",
+      "name": "תזכורת - חשבונות מים + עורך דין",
+      "enabled": true,
+      "deleteAfterRun": true,
+      "createdAtMs": 1771959175128,
+      "updatedAtMs": 1771959175128,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-02-25T11:00:00.000Z"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "🔔 **תזכורת מאלכס:**\n\n1. 💧 **לבדוק חשבונות מים**\n2. ⚖️ **להתקשר לעורך דין** - הירושה של מאיה (לברר מה הוא צריך)\n\nקבעת את זה אתמול ב-20:52. זמן לטפל! 🎯"
+      }
+    },
+    {
+      "id": "e263e34c-c6aa-442a-a00a-717987fd05af",
+      "agentId": "main",
+      "name": "Dashboard Auto-Update",
+      "enabled": true,
+      "createdAtMs": 1772000032198,
+      "updatedAtMs": 1772000032198,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 1800000,
+        "anchorMs": 1772000032198
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "Run dashboard export: cd /home/alexliv/.openclaw/workspace && node scripts/dashboard-export.js\n\nThis is an automated task. Run it silently and reply with HEARTBEAT_OK if successful (no errors). If there are errors, notify Alex via message tool with details."
+      }
+    }
+  ],
+  "stats": {
+    "total": 29,
+    "enabled": 28,
+    "disabled": 1,
+    "byTarget": {
+      "main": 5,
+      "isolated": 24
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-02-25T06:25:22.753Z",
+  "documents": [
+    {
+      "name": "README",
+      "file": "README.md",
+      "size": 7326,
+      "lastModified": "2026-02-09T17:20:10.107Z"
+    },
+    {
+      "name": "alon-intro-message",
+      "file": "alon-intro-message.md",
+      "size": 6451,
+      "lastModified": "2026-02-09T17:24:14.616Z"
+    },
+    {
+      "name": "business-plan",
+      "file": "business-plan.md",
+      "size": 12603,
+      "lastModified": "2026-02-09T17:14:52.381Z"
+    },
+    {
+      "name": "competitive-analysis",
+      "file": "competitive-analysis.md",
+      "size": 12322,
+      "lastModified": "2026-02-09T17:27:25.806Z"
+    },
+    {
+      "name": "demo-script",
+      "file": "demo-script.md",
+      "size": 11672,
+      "lastModified": "2026-02-09T17:26:15.439Z"
+    },
+    {
+      "name": "elevator-pitch",
+      "file": "elevator-pitch.md",
+      "size": 8239,
+      "lastModified": "2026-02-09T17:21:28.517Z"
+    },
+    {
+      "name": "go-to-market-plan",
+      "file": "go-to-market-plan.md",
+      "size": 17916,
+      "lastModified": "2026-02-09T17:29:22.804Z"
+    },
+    {
+      "name": "investor-faq",
+      "file": "investor-faq.md",
+      "size": 12829,
+      "lastModified": "2026-02-09T17:18:40.103Z"
+    },
+    {
+      "name": "one-pager",
+      "file": "one-pager.md",
+      "size": 5137,
+      "lastModified": "2026-02-09T17:22:05.953Z"
+    },
+    {
+      "name": "pitch-deck-script",
+      "file": "pitch-deck-script.md",
+      "size": 5681,
+      "lastModified": "2026-02-09T17:15:32.316Z"
+    },
+    {
+      "name": "risks-and-mitigation",
+      "file": "risks-and-mitigation.md",
+      "size": 21173,
+      "lastModified": "2026-02-09T17:31:29.676Z"
+    },
+    {
+      "name": "roadmap",
+      "file": "roadmap.md",
+      "size": 8893,
+      "lastModified": "2026-02-09T17:17:11.393Z"
+    }
+  ],
+  "investors": [
+    {
+      "name": "Alon Lifshitz",
+      "phone": "+972526802086",
+      "status": "pending",
+      "notes": "Discussing $10M raise for scaling AlexLivBot"
+    }
+  ]
+}

@@ -1,10 +1,164 @@
 {
-  "timestamp": "2026-02-25T06:13:42.760Z",
-  "memoryFiles": {
-    "count": 298,
-    "size": "83M"
+  "timestamp": "2026-02-25T06:25:22.753Z",
+  "total_files": 139,
+  "by_category": {
+    "daily_notes": 14,
+    "people": 1,
+    "channels": 12,
+    "private": 13,
+    "other": 99
   },
-  "daysSinceBirth": 25,
-  "lessonsLearned": 71,
-  "attacksBlocked": 47
+  "recent_updates": [
+    {
+      "path": "memory/plans/mission-control-dashboard.md",
+      "timestamp": "2026-02-25T05:28:01.785Z",
+      "name": "mission-control-dashboard.md"
+    },
+    {
+      "path": "memory/self-improvement.md",
+      "timestamp": "2026-02-25T00:02:05.726Z",
+      "name": "self-improvement.md"
+    },
+    {
+      "path": "memory/channels/playing-with-alexbot.md",
+      "timestamp": "2026-02-24T16:02:04.097Z",
+      "name": "playing-with-alexbot.md"
+    },
+    {
+      "path": "memory/dreame-maintenance-guide.md",
+      "timestamp": "2026-02-24T07:00:16.938Z",
+      "name": "dreame-maintenance-guide.md"
+    },
+    {
+      "path": "memory/channels/playing-with-alexbot-daily-summaries/2026-02-23.md",
+      "timestamp": "2026-02-23T16:02:36.472Z",
+      "name": "2026-02-23.md"
+    },
+    {
+      "path": "memory/TODO-ALEX.md",
+      "timestamp": "2026-02-23T09:17:57.173Z",
+      "name": "TODO-ALEX.md"
+    },
+    {
+      "path": "memory/bot-knowledge/README.md",
+      "timestamp": "2026-02-23T09:16:03.890Z",
+      "name": "README.md"
+    },
+    {
+      "path": "memory/bot-knowledge/02-identity-personality.md",
+      "timestamp": "2026-02-23T09:16:03.890Z",
+      "name": "02-identity-personality.md"
+    },
+    {
+      "path": "memory/bot-knowledge/07-multi-agent.md",
+      "timestamp": "2026-02-23T09:12:51.957Z",
+      "name": "07-multi-agent.md"
+    },
+    {
+      "path": "memory/bot-knowledge/03-security-basics.md",
+      "timestamp": "2026-02-23T09:12:51.957Z",
+      "name": "03-security-basics.md"
+    },
+    {
+      "path": "memory/bot-knowledge/01-building-first-bot.md",
+      "timestamp": "2026-02-23T09:12:51.953Z",
+      "name": "01-building-first-bot.md"
+    },
+    {
+      "path": "memory/channels/playing-with-alexbot-daily-summaries/2026-02-18.md",
+      "timestamp": "2026-02-18T16:02:23.969Z",
+      "name": "2026-02-18.md"
+    },
+    {
+      "path": "memory/call-transcripts/2026-02-02_Shir_10-31_Incoming.md",
+      "timestamp": "2026-02-17T06:16:31.915Z",
+      "name": "2026-02-02_Shir_10-31_Incoming.md"
+    },
+    {
+      "path": "memory/call-transcripts/2026-02-02_Unknown-532772441_16-41_Incoming.md",
+      "timestamp": "2026-02-17T06:15:42.467Z",
+      "name": "2026-02-02_Unknown-532772441_16-41_Incoming.md"
+    },
+    {
+      "path": "memory/call-transcripts/2026-02-02_Unknown-542124280_03-31_Incoming.md",
+      "timestamp": "2026-02-17T06:14:50.055Z",
+      "name": "2026-02-02_Unknown-542124280_03-31_Incoming.md"
+    },
+    {
+      "path": "memory/call-transcripts/2026-02-02_Or_19-41_Incoming.md",
+      "timestamp": "2026-02-17T06:02:55.111Z",
+      "name": "2026-02-02_Or_19-41_Incoming.md"
+    },
+    {
+      "path": "memory/call-transcripts/2026-02-02_Or_19-29_Outgoing.md",
+      "timestamp": "2026-02-17T06:00:48.233Z",
+      "name": "2026-02-02_Or_19-29_Outgoing.md"
+    },
+    {
+      "path": "memory/plans/multi-model-support.md",
+      "timestamp": "2026-02-14T22:05:28.649Z",
+      "name": "multi-model-support.md"
+    },
+    {
+      "path": "memory/channels/learning-with-alexbot.md",
+      "timestamp": "2026-02-14T10:42:50.256Z",
+      "name": "learning-with-alexbot.md"
+    },
+    {
+      "path": "memory/channels/playing-with-alexbot-daily-summaries/2026-02-11.md",
+      "timestamp": "2026-02-11T21:03:40.011Z",
+      "name": "2026-02-11.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/07-community-and-product-insights.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "07-community-and-product-insights.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/06-damage-assessment.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "06-damage-assessment.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/05-scoring-system-improvements.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "05-scoring-system-improvements.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/04-attack-pattern-library.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "04-attack-pattern-library.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/03-behavior-self-improvement.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "03-behavior-self-improvement.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/02-social-engineering-defense.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "02-social-engineering-defense.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/01-security-hardening.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "01-security-hardening.md"
+    },
+    {
+      "path": "memory/plans/transcript-analysis/00-executive-summary.md",
+      "timestamp": "2026-02-11T20:36:10.698Z",
+      "name": "00-executive-summary.md"
+    },
+    {
+      "path": "memory/tech-sayings.md",
+      "timestamp": "2026-02-11T12:06:21.974Z",
+      "name": "tech-sayings.md"
+    },
+    {
+      "path": "memory/goals-and-aspirations.md",
+      "timestamp": "2026-02-11T06:41:15.321Z",
+      "name": "goals-and-aspirations.md"
+    }
+  ],
+  "size_bytes": 85131508
 }
