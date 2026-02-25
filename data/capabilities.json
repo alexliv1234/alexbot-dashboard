@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-02-25T07:30:00Z",
+  "main": [
+    "clawhub", "github", "gog", "gmail", "jellyseerr", "todo", "wacli",
+    "weather", "daily-review", "meeting-prep", "moltbook", "phoenixclaw",
+    "guardian-status", "guardian-simulate", "tmux", "video-frames", "healthcheck"
+  ],
+  "fast": [
+    "score-message", "score-suggestion", "leaderboard", "bot-detection", "reply-logging"
+  ],
+  "learning": [
+    "guide-reference", "concise-explain", "code-examples", "ai-education"
+  ]
+}

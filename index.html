@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlexBot Mission Control</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo">🤖</span>
+            <h1>AlexBot Mission Control</h1>
+            <span id="status-indicator" class="status-badge online">● ONLINE</span>
+        </div>
+        <div class="header-right">
+            <span id="last-update" class="last-update">Last update: --</span>
+            <button id="refresh-btn" class="btn btn-sm">🔄 Refresh</button>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="mission-control">🎯 Mission Control</button>
+        <button class="tab-btn" data-tab="alex-alexbot">💝 Alex & AlexBot</button>
+        <button class="tab-btn" data-tab="agents">🤖 Agents</button>
+        <button class="tab-btn" data-tab="communications">💬 Communications</button>
+        <button class="tab-btn" data-tab="automation">⏰ Automation</button>
+        <button class="tab-btn" data-tab="memory">🧠 Memory</button>
+        <button class="tab-btn" data-tab="playing-group">🎮 Playing Group</button>
+        <button class="tab-btn" data-tab="capabilities">⚙️ Capabilities</button>
+        <button class="tab-btn" data-tab="analytics">📊 Analytics</button>
+        <button class="tab-btn" data-tab="actions">⚡ Actions</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Tab 1: Mission Control -->
+        <section id="mission-control" class="tab-content active">
+            <div class="grid grid-cols-3">
+                <!-- Status Card -->
+                <div class="card span-2">
+                    <div class="card-header">
+                        <h2>🤖 AlexBot Status</h2>
+                        <span id="main-status" class="status-badge online">ONLINE 🟢</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <span class="stat-label">Model</span>
+                                <span id="stat-model" class="stat-value">--</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Uptime</span>
+                                <span id="stat-uptime" class="stat-value">--</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Tokens Today</span>
+                                <span id="stat-tokens" class="stat-value">--</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Cost Today</span>
+                                <span id="stat-cost" class="stat-value">--</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Active Sessions</span>
+                                <span id="stat-sessions" class="stat-value">--</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Agents</span>
+                                <span id="stat-agents" class="stat-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>⚡ Quick Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-actions">
+                            <button class="action-btn" data-action="check-emails">📧 Check Emails</button>
+                            <button class="action-btn" data-action="calendar">📅 Calendar</button>
+                            <button class="action-btn" data-action="weather">🌤️ Weather</button>
+                            <button class="action-btn" data-action="tasks">📋 Tasks</button>
+                            <button class="action-btn" data-action="status">📊 Status</button>
+                        </div>
+                        <div class="custom-action">
+                            <input type="text" id="custom-message" placeholder="Custom message...">
+                            <button class="btn" id="send-custom">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Priorities -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📋 Active Priorities</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="priorities-list" class="task-list">
+                            <li class="loading">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card span-2">
+                    <div class="card-header">
+                        <h2>🕐 Recent Activity</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="activity-feed" class="activity-list">
+                            <li class="loading">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 2: Alex & AlexBot -->
+        <section id="alex-alexbot" class="tab-content">
+            <div class="grid grid-cols-2">
+                <!-- Partnership Overview -->
+                <div class="card span-2">
+                    <div class="card-header">
+                        <h2>💝 Alex & AlexBot - Your Digital Twin</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="quote-block">
+                            <p>"I'm not an assistant. I'm Alex, if Alex could fork himself and run in parallel."</p>
+                            <cite>— IDENTITY.md</cite>
+                        </div>
+                        <div class="partnership-stats">
+                            <div class="partner-card">
+                                <span class="partner-icon">👤</span>
+                                <h3>Alex Liverant</h3>
+                                <p>Co-founder & CTO</p>
+                                <p>Esh Group</p>
+                            </div>
+                            <div class="partner-card">
+                                <span class="partner-icon">🤖</span>
+                                <h3>AlexBot</h3>
+                                <p>Digital Twin</p>
+                                <p id="bot-age">Born: Jan 31, 2026</p>
+                            </div>
+                        </div>
+                        <div class="stats-grid stats-6">
+                            <div class="stat">
+                                <span class="stat-value" id="days-together">--</span>
+                                <span class="stat-label">Days Together</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="messages-exchanged">--</span>
+                                <span class="stat-label">Messages</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="lessons-learned">--</span>
+                                <span class="stat-label">Lessons Learned</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="attacks-blocked">--</span>
+                                <span class="stat-label">Attacks Blocked</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="tasks-completed">--</span>
+                                <span class="stat-label">Tasks Done</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="improvements-made">--</span>
+                                <span class="stat-label">Improvements</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scheduled Tasks & Reminders -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>⏰ Scheduled Tasks & Reminders</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="scheduled-tasks" class="task-list">
+                            <li class="loading">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- What I Do For You -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🎯 What I Do For Alex</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="capabilities-breakdown" class="capabilities-tree">
+                            <div class="cap-category">
+                                <h4>☀️ Daily Operations</h4>
+                                <ul>
+                                    <li>Morning Briefing (6:30 AM)</li>
+                                    <li>Email Monitoring & Summarization</li>
+                                    <li>Calendar Management</li>
+                                    <li>Task Tracking & Reminders</li>
+                                    <li>Media Server Management</li>
+                                </ul>
+                            </div>
+                            <div class="cap-category">
+                                <h4>📱 Communication</h4>
+                                <ul>
+                                    <li>WhatsApp - Direct DM support</li>
+                                    <li>Playing Group Management</li>
+                                    <li>Family Responses (Russian/Hebrew)</li>
+                                    <li>Smart Filtering</li>
+                                </ul>
+                            </div>
+                            <div class="cap-category">
+                                <h4>💻 Technical</h4>
+                                <ul>
+                                    <li>Code Assistance & Automation</li>
+                                    <li>Git Auto-Commits</li>
+                                    <li>Multi-Agent Orchestration</li>
+                                    <li>Security - Attack Blocking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Tasks -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📋 Current Active Tasks</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="active-tasks-list" class="task-list">
+                            <li class="loading">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Evolution Timeline -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📈 Evolution Timeline</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="evolution-timeline" class="timeline">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Capabilities Status -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🛠️ Capabilities Status</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="cap-columns">
+                            <div class="cap-col">
+                                <h4>✅ Active</h4>
+                                <ul id="cap-active" class="cap-list"></ul>
+                            </div>
+                            <div class="cap-col">
+                                <h4>⏳ Learning</h4>
+                                <ul id="cap-learning" class="cap-list"></ul>
+                            </div>
+                            <div class="cap-col">
+                                <h4>🔮 Planned</h4>
+                                <ul id="cap-planned" class="cap-list"></ul>
+                            </div>
+                        </div>
+                        <div class="capability-score">
+                            <span>Capability Score: </span>
+                            <strong id="cap-score">--/--</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Metrics -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📊 Performance Metrics</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="metrics-list">
+                            <div class="metric-row">
+                                <span>Avg Response Time</span>
+                                <strong id="metric-response-time">--</strong>
+                            </div>
+                            <div class="metric-row">
+                                <span>Task Success Rate</span>
+                                <strong id="metric-success-rate">--</strong>
+                            </div>
+                            <div class="metric-row">
+                                <span>Messages Today</span>
+                                <strong id="metric-messages-today">--</strong>
+                            </div>
+                            <div class="metric-row">
+                                <span>Security Score</span>
+                                <strong id="metric-security">--</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 3: Agents -->
+        <section id="agents" class="tab-content">
+            <div class="grid grid-cols-3">
+                <div class="card span-3">
+                    <div class="card-header">
+                        <h2>🤖 Agents Overview</h2>
+                        <span class="auto-refresh">Auto-Refresh: ON</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="agents-grid" class="agents-grid">
+                            <div class="loading">Loading agents...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Sub-Dashboard Container -->
+                <div id="agent-subdashboard" class="card span-3 hidden">
+                    <div class="card-header">
+                        <button class="btn btn-sm" id="back-to-agents">← Back to Agents</button>
+                        <h2 id="subdash-title">Agent Details</h2>
+                    </div>
+                    <div class="card-body" id="subdash-content">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Agent Comparison -->
+                <div class="card span-3">
+                    <div class="card-header">
+                        <h2>📊 Agent Comparison</h2>
+                    </div>
+                    <div class="card-body">
+                        <table id="agent-comparison" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>🎯 main</th>
+                                    <th>⚡ fast</th>
+                                    <th>📚 learning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="4" class="loading">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 4: Communications -->
+        <section id="communications" class="tab-content">
+            <div class="grid grid-cols-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📡 Communication Channels</h2>
+                    </div>
+                    <div class="card-body">
+                        <table id="channels-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Channel</th>
+                                    <th>Sessions</th>
+                                    <th>Today</th>
+                                    <th>Last Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="4" class="loading">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🗂️ Active Sessions</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="sessions-list" class="session-list">
+                            <li class="loading">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 5: Automation -->
+        <section id="automation" class="tab-content">
+            <div class="grid grid-cols-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>⏰ Cron Jobs</h2>
+                        <div class="cron-stats">
+                            <span id="cron-enabled">✅ Enabled: --</span>
+                            <span id="cron-disabled">⏸️ Disabled: --</span>
+                            <span id="cron-running">🏃 Running: --</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="cron-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Job Name</th>
+                                    <th>Agent</th>
+                                    <th>Schedule</th>
+                                    <th>Next Run</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="6" class="loading">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 6: Memory -->
+        <section id="memory" class="tab-content">
+            <div class="grid grid-cols-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🧠 Memory System</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="stats-grid stats-4">
+                            <div class="stat">
+                                <span class="stat-value" id="memory-size">--</span>
+                                <span class="stat-label">MEMORY.md Size</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="daily-notes">--</span>
+                                <span class="stat-label">Daily Notes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="total-lessons">--</span>
+                                <span class="stat-label">Lessons</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="security-incidents">--</span>
+                                <span class="stat-label">Attacks Blocked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📚 Recent Lessons</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="lessons-list" class="lesson-list">
+                            <li class="loading">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 7: Playing Group -->
+        <section id="playing-group" class="tab-content">
+            <div class="grid grid-cols-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🏆 Today's Leaderboard</h2>
+                        <span id="leaderboard-date">--</span>
+                    </div>
+                    <div class="card-body">
+                        <table id="leaderboard-table" class="data-table leaderboard">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player</th>
+                                    <th>Points</th>
+                                    <th>Messages</th>
+                                    <th>Avg</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="5" class="loading">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>💡 Pending Suggestions</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="suggestions-list" class="suggestions-list">
+                            <li class="loading">Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 8: Capabilities -->
+        <section id="capabilities" class="tab-content">
+            <div class="grid grid-cols-2">
+                <div class="card span-2">
+                    <div class="card-header">
+                        <h2>🛠️ Skills Inventory</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="skills-by-agent" class="skills-grid">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 9: Analytics -->
+        <section id="analytics" class="tab-content">
+            <div class="grid grid-cols-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>💰 Cost by Agent</h2>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="cost-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📈 Token Usage (7 Days)</h2>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="tokens-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card span-2">
+                    <div class="card-header">
+                        <h2>📊 Usage Summary</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="stats-grid stats-4">
+                            <div class="stat">
+                                <span class="stat-value" id="total-tokens-week">--</span>
+                                <span class="stat-label">Tokens This Week</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="total-cost-week">--</span>
+                                <span class="stat-label">Cost This Week</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="avg-daily-cost">--</span>
+                                <span class="stat-label">Avg Daily Cost</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="most-used-agent">--</span>
+                                <span class="stat-label">Most Used Agent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 10: Actions -->
+        <section id="actions" class="tab-content">
+            <div class="grid grid-cols-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🎯 main Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="action-grid">
+                            <button class="action-btn" data-action="check-emails">📧 Check Emails</button>
+                            <button class="action-btn" data-action="calendar">📅 Calendar</button>
+                            <button class="action-btn" data-action="tasks">📋 Tasks</button>
+                            <button class="action-btn" data-action="restart-main">🔄 Restart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>⚡ fast Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="action-grid">
+                            <button class="action-btn" data-action="leaderboard">📊 Leaderboard</button>
+                            <button class="action-btn" data-action="morning-wake">🌅 Morning Wake</button>
+                            <button class="action-btn" data-action="nightly-summary">🌙 Nightly Summary</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📚 learning Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="action-grid">
+                            <button class="action-btn" data-action="list-guides">📖 List Guides</button>
+                            <button class="action-btn" data-action="recent-questions">❓ Recent Q's</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card span-3">
+                    <div class="card-header">
+                        <h2>💬 Send Custom Command</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="custom-command">
+                            <select id="target-agent">
+                                <option value="main">🎯 main</option>
+                                <option value="fast">⚡ fast</option>
+                                <option value="learning">📚 learning</option>
+                            </select>
+                            <input type="text" id="custom-command-input" placeholder="Enter command...">
+                            <button class="btn" id="send-command">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AlexBot Mission Control • Built with 💝 • <span id="footer-update">Last data: --</span></p>
+    </footer>
+
+    <script src="js/utils/format.js"></script>
+    <script src="js/data-loader.js"></script>
+    <script src="js/tabs/mission-control.js"></script>
+    <script src="js/tabs/alex-alexbot.js"></script>
+    <script src="js/tabs/agents.js"></script>
+    <script src="js/tabs/communications.js"></script>
+    <script src="js/tabs/cron.js"></script>
+    <script src="js/tabs/memory.js"></script>
+    <script src="js/tabs/playing-group.js"></script>
+    <script src="js/tabs/capabilities.js"></script>
+    <script src="js/tabs/analytics.js"></script>
+    <script src="js/tabs/actions.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

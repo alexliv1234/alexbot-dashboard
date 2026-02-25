@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-02-25T07:30:00Z",
+  "online": true,
+  "model": "claude-opus-4-5",
+  "startTime": "2026-01-31T00:00:00Z",
+  "tokensToday": 54206,
+  "costToday": 10.49,
+  "activeSessions": 23,
+  "activeAgents": 3,
+  "recentActivity": [
+    { "timestamp": "2026-02-25T07:33:00Z", "event": "Dashboard created" },
+    { "timestamp": "2026-02-25T07:30:00Z", "event": "Learning question sent" },
+    { "timestamp": "2026-02-25T07:16:00Z", "event": "Git Auto-Commit: 4 files synced" },
+    { "timestamp": "2026-02-25T07:15:00Z", "event": "Bot Message Check: HEARTBEAT_OK" },
+    { "timestamp": "2026-02-25T06:30:00Z", "event": "Morning Briefing sent to Alex" }
+  ]
+}

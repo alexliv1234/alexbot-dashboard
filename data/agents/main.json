@@ -1,0 +1,31 @@
+{
+  "id": "main",
+  "name": "AlexBot (Main)",
+  "role": "Primary Brain - Alex's Digital Twin",
+  "model": "anthropic/claude-opus-4-5",
+  "workspace": "/home/alexliv/.openclaw/workspace",
+  "status": "active",
+  "tokensToday": 54206,
+  "costToday": 8.23,
+  "messagesHandled": 47,
+  "capabilities": [
+    "Deep reasoning with Opus model",
+    "Email access (Gmail via gog)",
+    "Calendar management",
+    "Memory file write access",
+    "Security decision authority",
+    "Cron job creation (with validation)",
+    "Sub-agent orchestration"
+  ],
+  "sessions": [
+    { "key": "main:main", "name": "webchat", "tokens": 34733, "lastActive": "2026-02-25T07:33:00Z" },
+    { "key": "whatsapp:dm:alex", "name": "WhatsApp - Alex", "tokens": 54206, "lastActive": "2026-02-25T07:30:00Z" }
+  ],
+  "cronJobs": [
+    { "name": "Morning Briefing", "schedule": "6:30 daily" },
+    { "name": "Media Ready Check", "schedule": "every 10m" },
+    { "name": "Git Auto-Commit", "schedule": "every 10m" },
+    { "name": "Dashboard Export", "schedule": "every 5m" },
+    { "name": "Session Monitor", "schedule": "every 5m" }
+  ]
+}

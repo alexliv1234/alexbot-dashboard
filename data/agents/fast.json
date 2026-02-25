@@ -1,0 +1,27 @@
+{
+  "id": "fast",
+  "name": "AlexBot (Fast)",
+  "role": "Quick Response Agent - Playing Group & Rapid Tasks",
+  "model": "anthropic/claude-sonnet-4-5",
+  "workspace": "/home/alexliv/.openclaw/workspace-fast",
+  "status": "active",
+  "tokensToday": 12340,
+  "costToday": 2.14,
+  "messagesHandled": 23,
+  "capabilities": [
+    "Playing group management",
+    "Fast response time (cheaper model)",
+    "Score calculation (challenges & suggestions)",
+    "Leaderboard management",
+    "Bot detection & scoring",
+    "Sleep mode enforcement (23:00-08:00)"
+  ],
+  "sessions": [
+    { "key": "whatsapp:g-playing", "name": "משחקים עם אלכס הבוט", "tokens": 12340, "lastActive": "2026-02-25T07:00:00Z" }
+  ],
+  "cronJobs": [
+    { "name": "Morning Wakeup", "schedule": "09:55 Sun-Thu" },
+    { "name": "Hourly Leaderboard", "schedule": "11-17:00 hourly" },
+    { "name": "Nightly Summary", "schedule": "18:00 Sun-Thu" }
+  ]
+}

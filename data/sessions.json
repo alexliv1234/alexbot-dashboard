@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-02-25T07:30:00Z",
+  "channelStats": {
+    "whatsapp-dm": { "sessionCount": 3, "messagesToday": 47, "lastActivity": "2026-02-25T07:33:00Z" },
+    "whatsapp-group": { "sessionCount": 8, "messagesToday": 156, "lastActivity": "2026-02-25T07:30:00Z" },
+    "webchat": { "sessionCount": 1, "messagesToday": 12, "lastActivity": "2026-02-25T07:33:00Z" },
+    "cron": { "sessionCount": 14, "messagesToday": 89, "lastActivity": "2026-02-25T07:30:00Z" }
+  },
+  "list": [
+    { "key": "main:main", "name": "webchat (main)", "agent": "main", "tokens": 34733, "lastActive": "2026-02-25T07:33:00Z" },
+    { "key": "whatsapp:dm:alex", "name": "WhatsApp DM - Alex", "agent": "main", "tokens": 54206, "lastActive": "2026-02-25T07:30:00Z" },
+    { "key": "whatsapp:g-playing", "name": "משחקים עם אלכס הבוט", "agent": "fast", "tokens": 12340, "lastActive": "2026-02-25T07:00:00Z" },
+    { "key": "whatsapp:g-learning", "name": "לומדים עם אלכס הבוט", "agent": "learning", "tokens": 2100, "lastActive": "2026-02-25T07:30:00Z" },
+    { "key": "cron:morning-briefing", "name": "Morning Briefing", "agent": "main", "tokens": 0, "lastActive": "2026-02-25T06:30:00Z" }
+  ]
+}

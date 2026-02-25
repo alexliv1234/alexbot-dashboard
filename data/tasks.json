@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-02-25T07:30:00Z",
+  "priorities": [
+    { "title": "סלקום - הורדת עלויות אינטרנט+TV ב-2 דירות", "priority": "P1", "status": "in-progress" },
+    { "title": "נומי - לדבר על ריקודים בחתונה", "priority": "P1", "status": "pending", "dueDate": "2026-03-03" }
+  ],
+  "active": [
+    { "title": "Mission Control Dashboard", "priority": "P1", "status": "in-progress" },
+    { "title": "סלקום negotiations", "priority": "P1", "status": "in-progress" },
+    { "title": "OAuth refresh for email/calendar", "priority": "P2", "status": "pending" }
+  ],
+  "completed": [
+    { "title": "System setup", "completedAt": "2026-02-20" },
+    { "title": "Local LLM setup", "completedAt": "2026-02-18" }
+  ]
+}
