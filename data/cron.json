@@ -1,15 +1,4 @@
 {
-  "timestamp": "2026-02-25T07:30:00Z",
-  "jobs": [
-    { "id": "morning-briefing", "name": "Morning Briefing", "agent": "main", "schedule": "6:30 daily", "enabled": true, "nextRun": "Tomorrow 6:30" },
-    { "id": "media-check", "name": "Media Ready Check", "agent": "main", "schedule": "every 10m", "enabled": true, "nextRun": "07:40" },
-    { "id": "git-auto-commit", "name": "Git Auto-Commit", "agent": "main", "schedule": "every 10m", "enabled": true, "nextRun": "07:43" },
-    { "id": "dashboard-export", "name": "Dashboard Data Export", "agent": "main", "schedule": "every 5m", "enabled": true, "nextRun": "07:38" },
-    { "id": "session-monitor", "name": "Session Monitor", "agent": "main", "schedule": "every 5m", "enabled": true, "nextRun": "07:38" },
-    { "id": "playing-morning", "name": "Playing Group - Morning Wakeup", "agent": "fast", "schedule": "09:55 Sun-Thu", "enabled": true, "nextRun": "09:55" },
-    { "id": "playing-hourly", "name": "Hourly Leaderboard", "agent": "fast", "schedule": "11-17:00", "enabled": true, "nextRun": "11:00" },
-    { "id": "playing-nightly", "name": "Playing Group - Nightly Summary", "agent": "fast", "schedule": "18:00 Sun-Thu", "enabled": true, "nextRun": "18:00" },
-    { "id": "learning-question", "name": "Daily Learning Question", "agent": "learning", "schedule": "7:30 daily", "enabled": true, "nextRun": "Tomorrow 7:30" },
-    { "id": "moltbook-check", "name": "Moltbook Engagement", "agent": "main", "schedule": "every 12h", "enabled": true, "nextRun": "19:30" }
-  ]
+  "timestamp": "2026-02-25T06:12:01.515Z",
+  "jobs": []
 }

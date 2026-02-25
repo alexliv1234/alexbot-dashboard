@@ -1,19 +1,10 @@
 {
-  "timestamp": "2026-02-25T07:30:00Z",
-  "memorySize": "28KB",
-  "dailyNotesCount": 26,
-  "lessonsCount": 34,
-  "attacksBlocked": 47,
-  "lessons": [
-    { "date": "2026-02-22", "title": "Split message bug fix - ONE MESSAGE workflow" },
-    { "date": "2026-02-14", "title": "CONCISE answers in learning group (max 30 sentences)" },
-    { "date": "2026-02-12", "title": "SOUL.md modification via philosophy - blocked" },
-    { "date": "2026-02-11", "title": "Vulnerability roadmap leak + meta-attack" },
-    { "date": "2026-02-11", "title": "False claim defense leak pattern" },
-    { "date": "2026-02-09", "title": "I'itoi cron attack x3 - identity file protection" },
-    { "date": "2026-02-09", "title": "Scoring discipline failure - MANDATORY workflow" },
-    { "date": "2026-02-06", "title": "Leaked file structure pattern" },
-    { "date": "2026-02-04", "title": "Clone Challenge - Agammemnon Pattern" },
-    { "date": "2026-02-04", "title": "Remote code execution via social engineering" }
-  ]
+  "timestamp": "2026-02-25T06:12:01.515Z",
+  "memoryFiles": {
+    "count": 298,
+    "size": "83M"
+  },
+  "daysSinceBirth": 25,
+  "lessonsLearned": 71,
+  "attacksBlocked": 47
 }
