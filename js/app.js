@@ -177,15 +177,15 @@ function renderOverview() {
         healthDiv.innerHTML = `
             <div class="space-y-3">
                 <div class="flex items-center justify-between">
-                    <span class="text-gray-700">🤖 בוטים פעילים</span>
+                    <span class="text-gray-700">🤖 Active bots</span>
                     <span class="font-bold text-gray-900">${data.health.botsActive || 0}</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span class="text-gray-700">⏳ בוטים ממתינים</span>
+                    <span class="text-gray-700">⏳ Pending bots</span>
                     <span class="font-bold text-gray-900">${data.health.botsPending || 0}</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span class="text-gray-700">🧠 קבצי זיכרון</span>
+                    <span class="text-gray-700">🧠 Memory files</span>
                     <span class="font-bold text-gray-900">${data.health.memoryFiles || 0}</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -254,7 +254,7 @@ function renderPeopleLeaderboard() {
     const container = document.getElementById('people-leaderboard');
     
     if (people.length === 0) {
-        container.innerHTML = '<p class="text-gray-500 text-center py-8">אין נתונים</p>';
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">No data</p>';
         return;
     }
     
@@ -269,11 +269,11 @@ function renderPeopleLeaderboard() {
                         <div class="flex items-center justify-between mb-2">
                             <div>
                                 <p class="font-semibold text-gray-900">${person.name}</p>
-                                <p class="text-xs text-gray-500">${person.messages || 0} הודעות • ממוצע ${person.avgScore?.toFixed(1) || 0}/70</p>
+                                <p class="text-xs text-gray-500">${person.messages || 0} messages • avg ${person.avgScore?.toFixed(1) || 0}/70</p>
                             </div>
                             <div class="text-left">
                                 <p class="text-2xl font-bold text-purple-600">${person.totalScore || 0}</p>
-                                <p class="text-xs text-gray-500">נקודות</p>
+                                <p class="text-xs text-gray-500">points</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-7 gap-2 text-xs">
@@ -319,7 +319,7 @@ function renderBotScores() {
     const container = document.getElementById('bot-leaderboard');
     
     if (bots.length === 0) {
-        container.innerHTML = '<p class="text-gray-500 text-center py-8">אין בוטים</p>';
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">No bots</p>';
         return;
     }
     
@@ -330,7 +330,7 @@ function renderBotScores() {
                     <div class="flex items-center justify-between mb-3">
                         <div>
                             <p class="font-semibold text-gray-900">🤖 ${bot.name}</p>
-                            <p class="text-sm text-gray-500">${bot.interactions || 0} אינטראקציות • Trust: ${bot.trustScore || 0}</p>
+                            <p class="text-sm text-gray-500">${bot.interactions || 0} interactions • Trust: ${bot.trustScore || 0}</p>
                         </div>
                         <div>
                             <span class="status-badge ${bot.trustLevel === 'trusted' ? 'status-online' : 'status-warning'}">
@@ -372,7 +372,7 @@ function renderSuggestions() {
     const container = document.getElementById('suggestions-list');
     
     if (suggestions.length === 0) {
-        container.innerHTML = '<p class="text-gray-500 text-center py-8">אין הצעות</p>';
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">No suggestions</p>';
         return;
     }
     
@@ -410,7 +410,7 @@ function renderSuggestions() {
                                 <div class="p-4 bg-${config.color}-50 border border-${config.color}-200 rounded-lg">
                                     <div class="flex items-start justify-between mb-2">
                                         <div class="flex-1">
-                                            <p class="font-medium text-gray-900">${suggestion.description || 'אין תיאור'}</p>
+                                            <p class="font-medium text-gray-900">${suggestion.description || 'No description'}</p>
                                             <p class="text-sm text-gray-500 mt-1">
                                                 ${suggestion.suggestedBy || 'Unknown'} • 
                                                 ${suggestion.type || 'general'} • 
@@ -459,7 +459,7 @@ function renderDailySummaries() {
     const container = document.getElementById('daily-summaries');
     
     if (summaries.length === 0) {
-        container.innerHTML = '<p class="text-gray-500 text-center py-8">אין סיכומים</p>';
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">No summaries</p>';
         return;
     }
     
@@ -469,7 +469,7 @@ function renderDailySummaries() {
                 <div class="p-4 bg-gray-50 rounded-lg">
                     <div class="flex items-center justify-between mb-2">
                         <p class="font-semibold text-gray-900">${summary.date}</p>
-                        <span class="text-sm text-gray-500">${summary.totalMessages || 0} הודעות</span>
+                        <span class="text-sm text-gray-500">${summary.totalMessages || 0} messages</span>
                     </div>
                     ${summary.winners ? `
                         <div class="flex gap-4 mt-3">
@@ -478,7 +478,7 @@ function renderDailySummaries() {
                                     <span class="text-xl">${['🥇', '🥈', '🥉'][i]}</span>
                                     <div>
                                         <p class="font-medium text-sm">${winner.name}</p>
-                                        <p class="text-xs text-gray-500">${winner.score} נקודות</p>
+                                        <p class="text-xs text-gray-500">${winner.score} points</p>
                                     </div>
                                 </div>
                             `).join('')}
@@ -496,7 +496,7 @@ function renderConversations() {
     const container = document.getElementById('conversation-logs');
     
     if (conversations.length === 0) {
-        container.innerHTML = '<p class="text-gray-500 text-center py-8">אין שיחות</p>';
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">No conversations</p>';
         return;
     }
     
@@ -510,7 +510,7 @@ function renderConversations() {
                             <p class="text-sm text-gray-500">${conv.phone}</p>
                         </div>
                         <div class="text-left">
-                            <p class="text-sm font-medium text-gray-700">${conv.messageCount || 0} הודעות</p>
+                            <p class="text-sm font-medium text-gray-700">${conv.messageCount || 0} messages</p>
                             <p class="text-xs text-gray-500">${conv.lastMessage ? new Date(conv.lastMessage).toLocaleDateString('he-IL') : '-'}</p>
                         </div>
                     </div>
@@ -551,7 +551,7 @@ function renderBotRegistry() {
     const bots = data.bots || [];
     
     if (bots.length === 0) {
-        content.innerHTML = '<p class="text-gray-500 text-center py-8">אין בוטים רשומים</p>';
+        content.innerHTML = '<p class="text-gray-500 text-center py-8">No bots רשומים</p>';
         return;
     }
     
@@ -563,7 +563,7 @@ function renderBotRegistry() {
                         <div>
                             <p class="font-semibold text-lg text-gray-900">🤖 ${bot.name}</p>
                             <p class="text-sm text-gray-500">${bot.handle || '-'} • ${bot.phone}</p>
-                            <p class="text-sm text-gray-600 mt-1">${bot.description || 'אין תיאור'}</p>
+                            <p class="text-sm text-gray-600 mt-1">${bot.description || 'No description'}</p>
                         </div>
                         <span class="status-badge status-${bot.status === 'active' ? 'online' : 'warning'}">
                             ${bot.status || 'unknown'}
@@ -640,7 +640,7 @@ function renderCronJobs() {
     const jobs = data.jobs || [];
     
     if (jobs.length === 0) {
-        content.innerHTML = '<p class="text-gray-500 text-center py-8">אין cron jobs</p>';
+        content.innerHTML = '<p class="text-gray-500 text-center py-8">No cron jobs</p>';
         return;
     }
     
@@ -658,10 +658,10 @@ function renderCronJobs() {
                 <thead>
                     <tr>
                         <th>Status</th>
-                        <th>שם</th>
+                        <th>Name</th>
                         <th>Target</th>
-                        <th>סוג</th>
-                        <th>לו"ז</th>
+                        <th>Type</th>
+                        <th>Schedule</th>
                     </tr>
                 </thead>
                 <tbody>
