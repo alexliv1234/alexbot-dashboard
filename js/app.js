@@ -1,6 +1,281 @@
 // Global data cache
 let dashboardData = {};
 
+// ======================
+// UNIVERSAL FILE VIEWER
+// ======================
+
+// GitHub raw URL base
+const GITHUB_RAW = 'https://raw.githubusercontent.com/alexliv1234/alexbot/main/';
+
+// Open file viewer with auto-detection
+async function openFileViewer(filePath, customTitle = null) {
+    const title = customTitle || `📄 ${filePath.split('/').pop()}`;
+    
+    // Show loading modal
+    showModal(title, '<div class="text-center py-8"><p class="text-gray-500">טוען קובץ...</p></div>');
+    
+    try {
+        // Fetch file from GitHub
+        const url = GITHUB_RAW + filePath;
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        
+        const rawContent = await response.text();
+        const extension = filePath.split('.').pop().toLowerCase();
+        
+        // Render based on file type
+        let renderedContent;
+        let toolbar = '';
+        
+        if (extension === 'json') {
+            renderedContent = renderJSON(rawContent);
+            toolbar = createToolbar(rawContent, 'json', filePath);
+        } else if (extension === 'jsonl') {
+            renderedContent = renderJSONL(rawContent);
+            toolbar = createToolbar(rawContent, 'jsonl', filePath);
+        } else if (extension === 'md') {
+            renderedContent = renderMarkdown(rawContent);
+            toolbar = createToolbar(rawContent, 'markdown', filePath);
+        } else {
+            renderedContent = renderPlainText(rawContent);
+            toolbar = createToolbar(rawContent, 'text', filePath);
+        }
+        
+        const finalContent = `
+            ${toolbar}
+            <div class="file-viewer-content">
+                ${renderedContent}
+            </div>
+        `;
+        
+        // Update modal with rendered content
+        showModal(title, finalContent);
+        
+    } catch (error) {
+        console.error('Error loading file:', error);
+        showModal(title, `
+            <div class="text-center py-8">
+                <p class="text-red-600 font-semibold mb-2">❌ שגיאה בטעינת הקובץ</p>
+                <p class="text-gray-500 text-sm">${error.message}</p>
+            </div>
+        `);
+    }
+}
+
+// Open file viewer with external URL
+async function openFileViewerExternal(url, customTitle = null) {
+    const title = customTitle || `📄 ${url.split('/').pop()}`;
+    
+    // Show loading modal
+    showModal(title, '<div class="text-center py-8"><p class="text-gray-500">טוען קובץ...</p></div>');
+    
+    try {
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        
+        const rawContent = await response.text();
+        const extension = url.split('.').pop().toLowerCase().split('?')[0];
+        
+        // Render based on file type
+        let renderedContent;
+        let toolbar = '';
+        
+        if (extension === 'json') {
+            renderedContent = renderJSON(rawContent);
+            toolbar = createToolbarExternal(rawContent, 'json', url);
+        } else if (extension === 'jsonl') {
+            renderedContent = renderJSONL(rawContent);
+            toolbar = createToolbarExternal(rawContent, 'jsonl', url);
+        } else if (extension === 'md') {
+            renderedContent = renderMarkdown(rawContent);
+            toolbar = createToolbarExternal(rawContent, 'markdown', url);
+        } else {
+            renderedContent = renderPlainText(rawContent);
+            toolbar = createToolbarExternal(rawContent, 'text', url);
+        }
+        
+        const finalContent = `
+            ${toolbar}
+            <div class="file-viewer-content">
+                ${renderedContent}
+            </div>
+        `;
+        
+        // Update modal with rendered content
+        showModal(title, finalContent);
+        
+    } catch (error) {
+        console.error('Error loading file:', error);
+        showModal(title, `
+            <div class="text-center py-8">
+                <p class="text-red-600 font-semibold mb-2">❌ שגיאה בטעינת הקובץ</p>
+                <p class="text-gray-500 text-sm">${error.message}</p>
+            </div>
+        `);
+    }
+}
+
+// Create toolbar for file viewer
+function createToolbar(rawContent, fileType, filePath) {
+    return `
+        <div class="file-viewer-toolbar">
+            <span class="text-sm font-medium text-gray-600">
+                📄 ${fileType.toUpperCase()} | ${formatFileSize(rawContent.length)}
+            </span>
+            <div style="flex: 1"></div>
+            <button class="file-viewer-btn" onclick="copyToClipboard(\`${rawContent.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)">
+                📋 Copy
+            </button>
+            <a href="${GITHUB_RAW}${filePath}" download class="file-viewer-btn" style="text-decoration: none;">
+                ⬇️ Download
+            </a>
+        </div>
+    `;
+}
+
+// Create toolbar for external URLs
+function createToolbarExternal(rawContent, fileType, url) {
+    return `
+        <div class="file-viewer-toolbar">
+            <span class="text-sm font-medium text-gray-600">
+                📄 ${fileType.toUpperCase()} | ${formatFileSize(rawContent.length)}
+            </span>
+            <div style="flex: 1"></div>
+            <button class="file-viewer-btn" onclick="copyToClipboard(\`${rawContent.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)">
+                📋 Copy
+            </button>
+            <a href="${url}" download class="file-viewer-btn" style="text-decoration: none;">
+                ⬇️ Download
+            </a>
+        </div>
+    `;
+}
+
+// Format file size
+function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+// Copy to clipboard
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('✅ הועתק ללוח!');
+    }).catch(err => {
+        console.error('Copy failed:', err);
+        alert('❌ שגיאה בהעתקה');
+    });
+}
+
+// Render JSON with syntax highlighting
+function renderJSON(content) {
+    try {
+        const parsed = JSON.parse(content);
+        const formatted = JSON.stringify(parsed, null, 2);
+        const highlighted = hljs.highlight(formatted, { language: 'json' }).value;
+        
+        return `
+            <div class="file-viewer-json">
+                <pre><code class="hljs language-json">${highlighted}</code></pre>
+            </div>
+        `;
+    } catch (error) {
+        return `<div class="p-4 text-red-600">❌ Invalid JSON: ${error.message}</div>`;
+    }
+}
+
+// Render JSONL as chat timeline
+function renderJSONL(content) {
+    const lines = content.trim().split('\n').filter(line => line.trim());
+    const messages = [];
+    
+    for (const line of lines) {
+        try {
+            const parsed = JSON.parse(line);
+            messages.push(parsed);
+        } catch (error) {
+            console.error('Invalid JSONL line:', error);
+        }
+    }
+    
+    if (messages.length === 0) {
+        return '<div class="p-4 text-gray-500 text-center">אין הודעות</div>';
+    }
+    
+    return `
+        <div class="p-4 space-y-4">
+            ${messages.map(msg => {
+                const timestamp = msg.timestamp ? new Date(msg.timestamp).toLocaleString('he-IL') : '';
+                const sender = msg.sender || msg.name || 'Unknown';
+                const userMessage = msg.message || msg.original_message || '';
+                const botReply = msg.reply || msg.my_reply || '';
+                const isBot = msg.sender === 'AlexBot' || msg.fromBot;
+                
+                return `
+                    <div class="chat-message ${isBot ? 'from-bot' : 'from-user'}">
+                        <div class="chat-message-header">
+                            <span class="chat-message-sender">${isBot ? '🤖 AlexBot' : '👤 ' + sender}</span>
+                            <span class="chat-message-time">${timestamp}</span>
+                        </div>
+                        <div class="chat-message-content">${escapeHtml(userMessage || botReply)}</div>
+                        ${botReply && !isBot ? `
+                            <div class="mt-2 pt-2 border-t border-gray-200">
+                                <div class="text-xs text-gray-500 mb-1">🤖 AlexBot replied:</div>
+                                <div class="chat-message-content text-sm">${escapeHtml(botReply)}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
+// Render Markdown
+function renderMarkdown(content) {
+    try {
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            headerIds: true,
+            mangle: false
+        });
+        
+        const html = marked.parse(content);
+        return `<div class="file-viewer-markdown">${html}</div>`;
+    } catch (error) {
+        return `<div class="p-4 text-red-600">❌ Markdown render error: ${error.message}</div>`;
+    }
+}
+
+// Render plain text
+function renderPlainText(content) {
+    return `
+        <div class="p-4 font-mono text-sm whitespace-pre-wrap bg-gray-50">
+            ${escapeHtml(content)}
+        </div>
+    `;
+}
+
+// Escape HTML
+function escapeHtml(unsafe) {
+    if (!unsafe) return '';
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 // Modal management
 function showModal(title, content) {
     const modal = document.createElement('div');
@@ -416,11 +691,10 @@ function showPersonDetails(phone, name, personData) {
             
             <div>
                 <h4 class="text-lg font-semibold mb-3">💬 View Conversation History</h4>
-                <a href="raw-files/playing-with-alexbot-per-sender/${phone}/conversation.jsonl" 
-                   target="_blank"
-                   class="inline-flex items-center gap-2 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                <button onclick="openFileViewer('memory/channels/playing-with-alexbot-per-sender/${phone}/conversation.jsonl', '💬 Conversation: ${name}')" 
+                   class="inline-flex items-center gap-2 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition cursor-pointer">
                     📄 Open Conversation Log (JSONL)
-                </a>
+                </button>
             </div>
             
             <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-600">
@@ -745,15 +1019,14 @@ function showDailySummaryDetails(date, totalMessages, winnersData) {
             
             <div>
                 <h4 class="text-lg font-semibold mb-3">📄 View Full Day Log</h4>
-                <a href="raw-files/playing-with-alexbot-daily/${date}.jsonl" 
-                   target="_blank"
-                   class="flex items-center justify-between p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg border-2 border-indigo-200 hover:border-indigo-600 transition">
-                    <div>
+                <button onclick="openFileViewer('memory/channels/playing-with-alexbot-daily/${date}.jsonl', '📅 Daily Log: ${date}')" 
+                   class="w-full flex items-center justify-between p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg border-2 border-indigo-200 hover:border-indigo-600 transition cursor-pointer">
+                    <div class="text-right">
                         <p class="font-semibold text-indigo-900">📄 Daily Log (JSONL)</p>
                         <p class="text-sm text-indigo-600 mt-1">All messages from ${date}</p>
                     </div>
                     <span class="text-2xl text-indigo-600">→</span>
-                </a>
+                </button>
             </div>
             
             <div class="bg-purple-50 p-4 rounded-lg">
@@ -816,15 +1089,14 @@ function showConversationDetails(phone, name, messageCount) {
             <div>
                 <h4 class="text-lg font-semibold mb-3">📄 View Full Conversation</h4>
                 <div class="space-y-3">
-                    <a href="raw-files/playing-with-alexbot-per-sender/${phone}/conversation.jsonl" 
-                       target="_blank"
-                       class="flex items-center justify-between p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg border-2 border-indigo-200 hover:border-indigo-600 transition">
-                        <div>
+                    <button onclick="openFileViewer('memory/channels/playing-with-alexbot-per-sender/${phone}/conversation.jsonl', '💬 Conversation: ${name}')" 
+                       class="w-full flex items-center justify-between p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg border-2 border-indigo-200 hover:border-indigo-600 transition cursor-pointer">
+                        <div class="text-right">
                             <p class="font-semibold text-indigo-900">📄 Conversation Log (JSONL)</p>
                             <p class="text-sm text-indigo-600 mt-1">All messages in chronological order</p>
                         </div>
                         <span class="text-2xl text-indigo-600">→</span>
-                    </a>
+                    </button>
                 </div>
             </div>
             
@@ -881,17 +1153,16 @@ function renderLearningGroup() {
                 <p class="text-gray-600 mb-4">כל המדריכים נמצאים ב-GitHub והם פתוחים לכולם</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                     ${guides.map(guide => `
-                        <a href="https://github.com/alexliv1234/alexbot-learning-guides/blob/main/${guide.file}" 
-                           target="_blank"
-                           class="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 rounded-lg border-2 border-transparent hover:border-indigo-600 transition block">
+                        <button onclick="openFileViewerExternal('https://raw.githubusercontent.com/alexliv1234/alexbot-learning-guides/main/${guide.file}', '${guide.emoji} ${guide.name}')" 
+                           class="w-full p-4 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 rounded-lg border-2 border-transparent hover:border-indigo-600 transition cursor-pointer">
                             <div class="flex items-center gap-3">
                                 <span class="text-3xl">${guide.emoji}</span>
-                                <div class="flex-1">
+                                <div class="flex-1 text-right">
                                     <p class="font-semibold text-gray-900">${guide.name}</p>
-                                    <p class="text-xs text-gray-500 mt-1">GitHub →</p>
+                                    <p class="text-xs text-gray-500 mt-1">לחץ לקריאה →</p>
                                 </div>
                             </div>
-                        </a>
+                        </button>
                     `).join('')}
                 </div>
             </div>
@@ -968,11 +1239,10 @@ function renderFundraising() {
                 <h3 class="text-lg font-semibold mb-3">📄 Documents</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     ${docs.map(doc => `
-                        <a href="https://github.com/alexliv1234/alexbot/blob/main/${docPaths[doc.name] || '#'}" 
-                           target="_blank"
-                           class="p-4 bg-gray-50 hover:bg-gray-100 rounded-lg block border-2 border-transparent hover:border-indigo-600 transition">
+                        <button onclick="openFileViewer('${docPaths[doc.name] || '#'}', '💰 ${doc.name}')" 
+                           class="w-full p-4 bg-gray-50 hover:bg-gray-100 rounded-lg border-2 border-transparent hover:border-indigo-600 transition cursor-pointer">
                             <div class="flex items-center justify-between">
-                                <div>
+                                <div class="text-right">
                                     <p class="font-medium text-gray-900">${doc.name}</p>
                                     <p class="text-sm text-gray-500 mt-1">
                                         ${doc.lastUpdated ? new Date(doc.lastUpdated).toLocaleDateString('he-IL') : 'לא עודכן'}
@@ -980,7 +1250,7 @@ function renderFundraising() {
                                 </div>
                                 <span class="text-indigo-600 text-xl">📄 →</span>
                             </div>
-                        </a>
+                        </button>
                     `).join('')}
                 </div>
             </div>

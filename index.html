@@ -6,6 +6,10 @@
     <title>AlexBot Dashboard 🤖</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Universal File Viewer Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -233,6 +237,165 @@
         .clickable-row:hover {
             transform: translateX(-4px);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        /* File Viewer Styles */
+        .file-viewer-content {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .file-viewer-json {
+            background: #f6f8fa;
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+        }
+        
+        .file-viewer-json pre {
+            margin: 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .file-viewer-markdown {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .file-viewer-markdown h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.3em;
+        }
+        
+        .file-viewer-markdown h2 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+        
+        .file-viewer-markdown h3 {
+            font-size: 1.25em;
+            font-weight: bold;
+            margin-top: 0.8em;
+            margin-bottom: 0.4em;
+        }
+        
+        .file-viewer-markdown p {
+            margin-bottom: 1em;
+        }
+        
+        .file-viewer-markdown ul, .file-viewer-markdown ol {
+            margin-bottom: 1em;
+            padding-left: 2em;
+        }
+        
+        .file-viewer-markdown code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .file-viewer-markdown pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1em;
+        }
+        
+        .file-viewer-markdown pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .file-viewer-markdown table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+        
+        .file-viewer-markdown table th,
+        .file-viewer-markdown table td {
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            text-align: right;
+        }
+        
+        .file-viewer-markdown table th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+        
+        .chat-message {
+            margin-bottom: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+        
+        .chat-message.from-user {
+            background: #eff6ff;
+            border-left-color: #3b82f6;
+        }
+        
+        .chat-message.from-bot {
+            background: #f0fdf4;
+            border-left-color: #22c55e;
+        }
+        
+        .chat-message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        
+        .chat-message-sender {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .chat-message-time {
+            color: #6b7280;
+        }
+        
+        .chat-message-content {
+            color: #1f2937;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .file-viewer-toolbar {
+            display: flex;
+            gap: 8px;
+            padding: 12px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .file-viewer-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        
+        .file-viewer-btn:hover {
+            background: #f3f4f6;
+            border-color: #667eea;
         }
     </style>
 </head>
