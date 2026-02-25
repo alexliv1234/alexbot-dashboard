@@ -1,4 +1,201 @@
 {
-  "timestamp": "2026-02-25T06:12:01.515Z",
-  "jobs": []
+  "timestamp": "2026-02-25T06:13:42.760Z",
+  "jobs": [
+    {
+      "name": "moltbook-update",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "morning-briefing",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "media-ready-check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Call Recording Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "session-monitor",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Nightly Summary",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Morning Wakeup",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Activity Wake-Up",
+      "schedule": "cron",
+      "enabled": false,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Hourly Leaderboard",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Broke Score Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Weekly Suggestion Summary",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Git Auto-Commit",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Bot Message Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Bot Registration Scanner",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Session Health Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "User Pattern Analysis",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Learning Group - Daily Insights",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Learning Group - Weekly Summary",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "הכנות אחרונות לאירוח",
+      "schedule": "at",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "שאלת למידה - בוקר",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "שאלת למידה - צהריים",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "שאלת למידה - ערב + אימון",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "נקיון שבועי - יום חמישי",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "הפעלת Dreame - כל יומיים",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "תזכורת הליכה עם רון - שני",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "תזכורת הליכה עם רון - רביעי",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "למידה עצמית - לילה",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "תזכורת - חשבונות מים + עורך דין",
+      "schedule": "at",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    }
+  ]
 }

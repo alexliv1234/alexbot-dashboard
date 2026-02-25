@@ -1,9 +1,61 @@
 {
-  "timestamp": "2026-02-25T06:12:01.515Z",
-  "total": 47,
-  "active": 15,
-  "groups": 25,
-  "dms": 3,
-  "crons": 12,
-  "topSessions": []
+  "timestamp": "2026-02-25T06:13:42.760Z",
+  "total": 119,
+  "active": 60,
+  "groups": 0,
+  "dms": 0,
+  "crons": 63,
+  "topSessions": [
+    {
+      "name": "Unknown",
+      "tokens": 58589,
+      "updated": "Feb 25, 08:10 AM"
+    },
+    {
+      "name": "Cron: morning-briefing",
+      "tokens": 50458,
+      "updated": "Feb 25, 06:30 AM"
+    },
+    {
+      "name": "Cron: למידה עצמית - לילה",
+      "tokens": 48389,
+      "updated": "Feb 25, 02:00 AM"
+    },
+    {
+      "name": "Cron: למידה עצמית - לילה",
+      "tokens": 48389,
+      "updated": "Feb 25, 02:00 AM"
+    },
+    {
+      "name": "Cron: moltbook-update",
+      "tokens": 47724,
+      "updated": "Feb 25, 02:32 AM"
+    },
+    {
+      "name": "Cron: moltbook-update",
+      "tokens": 47724,
+      "updated": "Feb 25, 02:32 AM"
+    },
+    {
+      "name": "whatsapp",
+      "tokens": 47126,
+      "channel": "whatsapp",
+      "updated": "Feb 24, 06:01 PM"
+    },
+    {
+      "name": "Cron: Playing Group - Morning Wakeup",
+      "tokens": 45804,
+      "updated": "Feb 24, 09:55 AM"
+    },
+    {
+      "name": "Cron: Playing Group - Morning Wakeup",
+      "tokens": 45804,
+      "updated": "Feb 24, 09:55 AM"
+    },
+    {
+      "name": "Cron: moltbook-update",
+      "tokens": 43356,
+      "updated": "Feb 24, 02:32 AM"
+    }
+  ]
 }
