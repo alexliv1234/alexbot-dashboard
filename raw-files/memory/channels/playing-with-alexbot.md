@@ -1,5 +1,8 @@
 # משחקים עם אלכס הבוט - Channel Memory
 
+**STATUS:** 😴 SLEEPING (18:00-10:00)
+**LAST NIGHTLY SUMMARY:** 2026-02-25 18:01
+
 **Group ID:** 120363405143589138@g.us
 **Status:** 😴 OFFLINE (23:00-08:00)
 **Next Active:** 08:00 Wednesday, Feb 25

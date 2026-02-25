@@ -1,0 +1,29 @@
+{
+  "winners": [
+    {
+      "date": "2026-02-25",
+      "first": {
+        "jid": "+972559821072",
+        "name": "אור",
+        "points": 87,
+        "messages": 3,
+        "avg": 29
+      },
+      "second": {
+        "jid": "+972524544321",
+        "name": "Ori Nachum",
+        "points": 35,
+        "messages": 1,
+        "avg": 35
+      },
+      "third": {
+        "jid": "+972528504761",
+        "name": "ZS",
+        "points": 31,
+        "messages": 1,
+        "avg": 31
+      }
+    }
+  ],
+  "last_updated": "2026-02-25T18:01:35.000Z"
+}

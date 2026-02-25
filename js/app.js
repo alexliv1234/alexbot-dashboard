@@ -5,8 +5,8 @@ let dashboardData = {};
 // UNIVERSAL FILE VIEWER
 // ======================
 
-// GitHub raw URL base
-const GITHUB_RAW = 'https://raw.githubusercontent.com/alexliv1234/alexbot/main/';
+// GitHub raw URL base (using relative path to raw-files in dashboard repo)
+const GITHUB_RAW = './raw-files/';
 
 // Open file viewer with auto-detection
 async function openFileViewer(filePath, customTitle = null) {
