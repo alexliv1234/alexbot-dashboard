@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-25T06:13:42.760Z",
+  "timestamp": "2026-02-25T09:41:13.103Z",
   "jobs": [
     {
       "name": "moltbook-update",
@@ -128,13 +128,6 @@
       "nextRun": "N/A"
     },
     {
-      "name": "הכנות אחרונות לאירוח",
-      "schedule": "at",
-      "enabled": true,
-      "sessionTarget": "main",
-      "nextRun": "N/A"
-    },
-    {
       "name": "שאלת למידה - בוקר",
       "schedule": "cron",
       "enabled": true,
@@ -193,6 +186,13 @@
     {
       "name": "תזכורת - חשבונות מים + עורך דין",
       "schedule": "at",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Dashboard Auto-Update",
+      "schedule": "every",
       "enabled": true,
       "sessionTarget": "main",
       "nextRun": "N/A"
