@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-02-25T07:02:10.006Z",
+  "timestamp": "2026-02-25T08:23:48Z",
   "agents": {
     "main": {
-      "sessions": 128,
+      "sessions": 0,
       "tokens": 0,
       "cost": 0
     },
     "fast": {
-      "sessions": 8,
+      "sessions": 0,
       "tokens": 0,
       "cost": 0
     },
     "learning": {
-      "sessions": 2,
+      "sessions": 0,
       "tokens": 0,
       "cost": 0
     },
     "bot-handler": {
-      "sessions": 2,
+      "sessions": 0,
       "tokens": 0,
       "cost": 0
     }
   },
   "totals": {
-    "sessions": 140,
+    "sessions": 0,
     "tokens": {
       "total": 0,
       "main": 0,
@@ -45,6 +45,6 @@
     "botsActive": 2,
     "botsPending": 0,
     "botsBlocked": 0,
-    "memoryFiles": 139
+    "memoryFiles": 327
   }
 }

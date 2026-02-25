@@ -1,19 +1,9 @@
 {
-  "timestamp": "2026-02-25T07:02:10.026Z",
+  "timestamp": "2026-02-25T08:23:48Z",
   "stats": {
-    "sessions": 2,
-    "tokens": 0,
-    "cost": 0
-  },
-  "moderation": {
-    "incidents": [],
-    "active_warnings": {},
-    "active_timeouts": {},
-    "blocklist": []
-  },
-  "contributions": [],
-  "stats_summary": {
-    "totalWarnings": 4,
-    "totalContributions": 0
+    "questionsAnswered": 0,
+    "communityContributions": 0,
+    "moderationIncidents": 0,
+    "channelSizeKB": 4
   }
 }
