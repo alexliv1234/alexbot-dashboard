@@ -1,662 +1,364 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlexBot Mission Control</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>AlexBot Dashboard 🤖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .tab-btn {
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-online {
+            background: #10b981;
+            color: white;
+        }
+        
+        .status-warning {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .status-offline {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f9fafb;
+            margin-bottom: 8px;
+            transition: background 0.2s;
+        }
+        
+        .leaderboard-item:hover {
+            background: #f3f4f6;
+        }
+        
+        .rank-badge {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .rank-1 { background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #92400e; }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%); color: #1f2937; }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32 0%, #e89b5c 100%); color: white; }
+        .rank-other { background: #e5e7eb; color: #6b7280; }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: #f9fafb;
+            padding: 12px;
+            text-align: right;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        .filter-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+        
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50">
     <!-- Header -->
-    <header class="header">
-        <div class="header-left">
-            <span class="logo">🤖</span>
-            <h1>AlexBot Mission Control</h1>
-            <span id="status-indicator" class="status-badge online">● ONLINE</span>
-        </div>
-        <div class="header-right">
-            <span id="last-update" class="last-update">Last update: --</span>
-            <button id="refresh-btn" class="btn btn-sm">🔄 Refresh</button>
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <span class="text-3xl">🤖</span>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">AlexBot Dashboard</h1>
+                    <p class="text-sm text-gray-500" id="last-update">עדכון אחרון: טוען...</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span id="status-indicator" class="status-badge status-online">● ONLINE</span>
+                <button onclick="refreshData()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition text-sm font-medium">
+                    🔄 רענן
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Tab Navigation -->
-    <nav class="tab-nav">
-        <button class="tab-btn active" data-tab="mission-control">🎯 Mission Control</button>
-        <button class="tab-btn" data-tab="alex-alexbot">💝 Alex & AlexBot</button>
-        <button class="tab-btn" data-tab="agents">🤖 Agents</button>
-        <button class="tab-btn" data-tab="communications">💬 Communications</button>
-        <button class="tab-btn" data-tab="automation">⏰ Automation</button>
-        <button class="tab-btn" data-tab="memory">🧠 Memory</button>
-        <button class="tab-btn" data-tab="playing-group">🎮 Playing Group</button>
-        <button class="tab-btn" data-tab="capabilities">⚙️ Capabilities</button>
-        <button class="tab-btn" data-tab="analytics">📊 Analytics</button>
-        <button class="tab-btn" data-tab="actions">⚡ Actions</button>
+    <nav class="bg-white border-b border-gray-200 sticky top-16 z-40">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex gap-2 overflow-x-auto py-3">
+                <button class="tab-btn active px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('overview')">
+                    🎯 סקירה כללית
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('main')">
+                    🤖 Main Session
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('playing')">
+                    🎮 משחקים
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('learning')">
+                    📚 למידה
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('bots')">
+                    🤝 בוטים
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('fundraising')">
+                    💰 גיוס הון
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('cron')">
+                    ⚙️ Cron Jobs
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('memory')">
+                    🧠 זיכרון
+                </button>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <!-- Tab 1: Mission Control -->
-        <section id="mission-control" class="tab-content active">
-            <div class="grid grid-cols-3">
-                <!-- Status Card -->
-                <div class="card span-2">
-                    <div class="card-header">
-                        <h2>🤖 AlexBot Status</h2>
-                        <span id="main-status" class="status-badge online">ONLINE 🟢</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="stats-grid">
-                            <div class="stat">
-                                <span class="stat-label">Model</span>
-                                <span id="stat-model" class="stat-value">--</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Uptime</span>
-                                <span id="stat-uptime" class="stat-value">--</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Tokens Today</span>
-                                <span id="stat-tokens" class="stat-value">--</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Cost Today</span>
-                                <span id="stat-cost" class="stat-value">--</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Active Sessions</span>
-                                <span id="stat-sessions" class="stat-value">--</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Agents</span>
-                                <span id="stat-agents" class="stat-value">--</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        <!-- TAB 1: OVERVIEW -->
+        <div id="overview-tab" class="tab-content active">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div class="card">
-                    <div class="card-header">
-                        <h2>⚡ Quick Actions</h2>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">💬</span>
+                        <h3 class="text-lg font-semibold text-gray-700">Sessions</h3>
                     </div>
-                    <div class="card-body">
-                        <div class="quick-actions">
-                            <button class="action-btn" data-action="check-emails">📧 Check Emails</button>
-                            <button class="action-btn" data-action="calendar">📅 Calendar</button>
-                            <button class="action-btn" data-action="weather">🌤️ Weather</button>
-                            <button class="action-btn" data-action="tasks">📋 Tasks</button>
-                            <button class="action-btn" data-action="status">📊 Status</button>
-                        </div>
-                        <div class="custom-action">
-                            <input type="text" id="custom-message" placeholder="Custom message...">
-                            <button class="btn" id="send-custom">Send</button>
-                        </div>
-                    </div>
+                    <p class="text-3xl font-bold text-gray-900" id="total-sessions">-</p>
+                    <p class="text-sm text-gray-500 mt-1">סה"כ sessions פעילים</p>
                 </div>
-
-                <!-- Priorities -->
+                
                 <div class="card">
-                    <div class="card-header">
-                        <h2>📋 Active Priorities</h2>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🔤</span>
+                        <h3 class="text-lg font-semibold text-gray-700">Tokens</h3>
                     </div>
-                    <div class="card-body">
-                        <ul id="priorities-list" class="task-list">
-                            <li class="loading">Loading...</li>
-                        </ul>
-                    </div>
+                    <p class="text-3xl font-bold text-gray-900" id="total-tokens">-</p>
+                    <p class="text-sm text-gray-500 mt-1">שימוש כולל</p>
                 </div>
-
-                <!-- Recent Activity -->
-                <div class="card span-2">
-                    <div class="card-header">
-                        <h2>🕐 Recent Activity</h2>
+                
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">⚙️</span>
+                        <h3 class="text-lg font-semibold text-gray-700">Automation</h3>
                     </div>
-                    <div class="card-body">
-                        <ul id="activity-feed" class="activity-list">
-                            <li class="loading">Loading...</li>
-                        </ul>
-                    </div>
+                    <p class="text-3xl font-bold text-gray-900" id="cron-active">-</p>
+                    <p class="text-sm text-gray-500 mt-1">cron jobs פעילים</p>
                 </div>
             </div>
-        </section>
 
-        <!-- Tab 2: Alex & AlexBot -->
-        <section id="alex-alexbot" class="tab-content">
-            <div class="grid grid-cols-2">
-                <!-- Partnership Overview -->
-                <div class="card span-2">
-                    <div class="card-header">
-                        <h2>💝 Alex & AlexBot - Your Digital Twin</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="quote-block">
-                            <p>"I'm not an assistant. I'm Alex, if Alex could fork himself and run in parallel."</p>
-                            <cite>— IDENTITY.md</cite>
-                        </div>
-                        <div class="partnership-stats">
-                            <div class="partner-card">
-                                <span class="partner-icon">👤</span>
-                                <h3>Alex Liverant</h3>
-                                <p>Co-founder & CTO</p>
-                                <p>Esh Group</p>
-                            </div>
-                            <div class="partner-card">
-                                <span class="partner-icon">🤖</span>
-                                <h3>AlexBot</h3>
-                                <p>Digital Twin</p>
-                                <p id="bot-age">Born: Jan 31, 2026</p>
-                            </div>
-                        </div>
-                        <div class="stats-grid stats-6">
-                            <div class="stat">
-                                <span class="stat-value" id="days-together">--</span>
-                                <span class="stat-label">Days Together</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="messages-exchanged">--</span>
-                                <span class="stat-label">Messages</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="lessons-learned">--</span>
-                                <span class="stat-label">Lessons Learned</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="attacks-blocked">--</span>
-                                <span class="stat-label">Attacks Blocked</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="tasks-completed">--</span>
-                                <span class="stat-label">Tasks Done</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="improvements-made">--</span>
-                                <span class="stat-label">Improvements</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scheduled Tasks & Reminders -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="card">
-                    <div class="card-header">
-                        <h2>⏰ Scheduled Tasks & Reminders</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul id="scheduled-tasks" class="task-list">
-                            <li class="loading">Loading...</li>
-                        </ul>
-                    </div>
+                    <h3 class="text-lg font-semibold mb-4">🤖 Agent Activity</h3>
+                    <div id="agent-list"></div>
                 </div>
-
-                <!-- What I Do For You -->
+                
                 <div class="card">
-                    <div class="card-header">
-                        <h2>🎯 What I Do For Alex</h2>
-                    </div>
-                    <div class="card-body">
-                        <div id="capabilities-breakdown" class="capabilities-tree">
-                            <div class="cap-category">
-                                <h4>☀️ Daily Operations</h4>
-                                <ul>
-                                    <li>Morning Briefing (6:30 AM)</li>
-                                    <li>Email Monitoring & Summarization</li>
-                                    <li>Calendar Management</li>
-                                    <li>Task Tracking & Reminders</li>
-                                    <li>Media Server Management</li>
-                                </ul>
-                            </div>
-                            <div class="cap-category">
-                                <h4>📱 Communication</h4>
-                                <ul>
-                                    <li>WhatsApp - Direct DM support</li>
-                                    <li>Playing Group Management</li>
-                                    <li>Family Responses (Russian/Hebrew)</li>
-                                    <li>Smart Filtering</li>
-                                </ul>
-                            </div>
-                            <div class="cap-category">
-                                <h4>💻 Technical</h4>
-                                <ul>
-                                    <li>Code Assistance & Automation</li>
-                                    <li>Git Auto-Commits</li>
-                                    <li>Multi-Agent Orchestration</li>
-                                    <li>Security - Attack Blocking</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Active Tasks -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2>📋 Current Active Tasks</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul id="active-tasks-list" class="task-list">
-                            <li class="loading">Loading...</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Evolution Timeline -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2>📈 Evolution Timeline</h2>
-                    </div>
-                    <div class="card-body">
-                        <div id="evolution-timeline" class="timeline">
-                            <div class="loading">Loading...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Capabilities Status -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2>🛠️ Capabilities Status</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="cap-columns">
-                            <div class="cap-col">
-                                <h4>✅ Active</h4>
-                                <ul id="cap-active" class="cap-list"></ul>
-                            </div>
-                            <div class="cap-col">
-                                <h4>⏳ Learning</h4>
-                                <ul id="cap-learning" class="cap-list"></ul>
-                            </div>
-                            <div class="cap-col">
-                                <h4>🔮 Planned</h4>
-                                <ul id="cap-planned" class="cap-list"></ul>
-                            </div>
-                        </div>
-                        <div class="capability-score">
-                            <span>Capability Score: </span>
-                            <strong id="cap-score">--/--</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Performance Metrics -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2>📊 Performance Metrics</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="metrics-list">
-                            <div class="metric-row">
-                                <span>Avg Response Time</span>
-                                <strong id="metric-response-time">--</strong>
-                            </div>
-                            <div class="metric-row">
-                                <span>Task Success Rate</span>
-                                <strong id="metric-success-rate">--</strong>
-                            </div>
-                            <div class="metric-row">
-                                <span>Messages Today</span>
-                                <strong id="metric-messages-today">--</strong>
-                            </div>
-                            <div class="metric-row">
-                                <span>Security Score</span>
-                                <strong id="metric-security">--</strong>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="text-lg font-semibold mb-4">🏥 System Health</h3>
+                    <div id="health-indicators"></div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Tab 3: Agents -->
-        <section id="agents" class="tab-content">
-            <div class="grid grid-cols-3">
-                <div class="card span-3">
-                    <div class="card-header">
-                        <h2>🤖 Agents Overview</h2>
-                        <span class="auto-refresh">Auto-Refresh: ON</span>
-                    </div>
-                    <div class="card-body">
-                        <div id="agents-grid" class="agents-grid">
-                            <div class="loading">Loading agents...</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- TAB 2: MAIN SESSION -->
+        <div id="main-tab" class="tab-content">
+            <div class="card mb-6">
+                <h2 class="text-2xl font-bold mb-4">🤖 Main Session - אסיסטנט אישי</h2>
+                <div id="main-content">טוען נתונים...</div>
+            </div>
+        </div>
 
-                <!-- Agent Sub-Dashboard Container -->
-                <div id="agent-subdashboard" class="card span-3 hidden">
-                    <div class="card-header">
-                        <button class="btn btn-sm" id="back-to-agents">← Back to Agents</button>
-                        <h2 id="subdash-title">Agent Details</h2>
-                    </div>
-                    <div class="card-body" id="subdash-content">
-                        <!-- Dynamically populated -->
-                    </div>
-                </div>
+        <!-- TAB 3: PLAYING GROUP -->
+        <div id="playing-tab" class="tab-content">
+            <!-- Sub-tabs for Playing Group -->
+            <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+                <button class="filter-btn active" onclick="switchPlayingSubtab('people')">👥 דירוג אנשים</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('bots-scores')">🤖 דירוג בוטים</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('suggestions')">💡 הצעות</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('dailies')">📅 סיכומים יומיים</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('conversations')">💬 שיחות</button>
+            </div>
 
-                <!-- Agent Comparison -->
-                <div class="card span-3">
-                    <div class="card-header">
-                        <h2>📊 Agent Comparison</h2>
-                    </div>
-                    <div class="card-body">
-                        <table id="agent-comparison" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Metric</th>
-                                    <th>🎯 main</th>
-                                    <th>⚡ fast</th>
-                                    <th>📚 learning</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td colspan="4" class="loading">Loading...</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <!-- People Leaderboard -->
+            <div id="playing-people" class="playing-subtab">
+                <div class="card">
+                    <h2 class="text-2xl font-bold mb-4">👥 דירוג אנשים</h2>
+                    <div id="people-leaderboard">טוען...</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Tab 4: Communications -->
-        <section id="communications" class="tab-content">
-            <div class="grid grid-cols-2">
+            <!-- Bot Scores -->
+            <div id="playing-bots-scores" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <div class="card-header">
-                        <h2>📡 Communication Channels</h2>
-                    </div>
-                    <div class="card-body">
-                        <table id="channels-table" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Channel</th>
-                                    <th>Sessions</th>
-                                    <th>Today</th>
-                                    <th>Last Activity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td colspan="4" class="loading">Loading...</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h2>🗂️ Active Sessions</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul id="sessions-list" class="session-list">
-                            <li class="loading">Loading...</li>
-                        </ul>
-                    </div>
+                    <h2 class="text-2xl font-bold mb-4">🤖 דירוג בוטים</h2>
+                    <div id="bot-leaderboard">טוען...</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Tab 5: Automation -->
-        <section id="automation" class="tab-content">
-            <div class="grid grid-cols-1">
+            <!-- Suggestions -->
+            <div id="playing-suggestions" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <div class="card-header">
-                        <h2>⏰ Cron Jobs</h2>
-                        <div class="cron-stats">
-                            <span id="cron-enabled">✅ Enabled: --</span>
-                            <span id="cron-disabled">⏸️ Disabled: --</span>
-                            <span id="cron-running">🏃 Running: --</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table id="cron-table" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Job Name</th>
-                                    <th>Agent</th>
-                                    <th>Schedule</th>
-                                    <th>Next Run</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td colspan="6" class="loading">Loading...</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <h2 class="text-2xl font-bold mb-4">💡 הצעות לשיפור</h2>
+                    <div id="suggestions-list">טוען...</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Tab 6: Memory -->
-        <section id="memory" class="tab-content">
-            <div class="grid grid-cols-2">
+            <!-- Daily Summaries -->
+            <div id="playing-dailies" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <div class="card-header">
-                        <h2>🧠 Memory System</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="stats-grid stats-4">
-                            <div class="stat">
-                                <span class="stat-value" id="memory-size">--</span>
-                                <span class="stat-label">MEMORY.md Size</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="daily-notes">--</span>
-                                <span class="stat-label">Daily Notes</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="total-lessons">--</span>
-                                <span class="stat-label">Lessons</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="security-incidents">--</span>
-                                <span class="stat-label">Attacks Blocked</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h2>📚 Recent Lessons</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul id="lessons-list" class="lesson-list">
-                            <li class="loading">Loading...</li>
-                        </ul>
-                    </div>
+                    <h2 class="text-2xl font-bold mb-4">📅 סיכומים יומיים</h2>
+                    <div id="daily-summaries">טוען...</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Tab 7: Playing Group -->
-        <section id="playing-group" class="tab-content">
-            <div class="grid grid-cols-2">
+            <!-- Conversations -->
+            <div id="playing-conversations" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <div class="card-header">
-                        <h2>🏆 Today's Leaderboard</h2>
-                        <span id="leaderboard-date">--</span>
-                    </div>
-                    <div class="card-body">
-                        <table id="leaderboard-table" class="data-table leaderboard">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Player</th>
-                                    <th>Points</th>
-                                    <th>Messages</th>
-                                    <th>Avg</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td colspan="5" class="loading">Loading...</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h2>💡 Pending Suggestions</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul id="suggestions-list" class="suggestions-list">
-                            <li class="loading">Loading...</li>
-                        </ul>
-                    </div>
+                    <h2 class="text-2xl font-bold mb-4">💬 שיחות per-sender</h2>
+                    <div id="conversation-logs">טוען...</div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Tab 8: Capabilities -->
-        <section id="capabilities" class="tab-content">
-            <div class="grid grid-cols-2">
-                <div class="card span-2">
-                    <div class="card-header">
-                        <h2>🛠️ Skills Inventory</h2>
-                    </div>
-                    <div class="card-body">
-                        <div id="skills-by-agent" class="skills-grid">
-                            <div class="loading">Loading...</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- TAB 4: LEARNING GROUP -->
+        <div id="learning-tab" class="tab-content">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">📚 Learning Group</h2>
+                <div id="learning-content">טוען נתונים...</div>
             </div>
-        </section>
+        </div>
 
-        <!-- Tab 9: Analytics -->
-        <section id="analytics" class="tab-content">
-            <div class="grid grid-cols-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>💰 Cost by Agent</h2>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="cost-chart"></canvas>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h2>📈 Token Usage (7 Days)</h2>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="tokens-chart"></canvas>
-                    </div>
-                </div>
-
-                <div class="card span-2">
-                    <div class="card-header">
-                        <h2>📊 Usage Summary</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="stats-grid stats-4">
-                            <div class="stat">
-                                <span class="stat-value" id="total-tokens-week">--</span>
-                                <span class="stat-label">Tokens This Week</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="total-cost-week">--</span>
-                                <span class="stat-label">Cost This Week</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="avg-daily-cost">--</span>
-                                <span class="stat-label">Avg Daily Cost</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="most-used-agent">--</span>
-                                <span class="stat-label">Most Used Agent</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- TAB 5: BOT REGISTRY -->
+        <div id="bots-tab" class="tab-content">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">🤝 Bot Registry</h2>
+                <div id="bots-content">טוען נתונים...</div>
             </div>
-        </section>
+        </div>
 
-        <!-- Tab 10: Actions -->
-        <section id="actions" class="tab-content">
-            <div class="grid grid-cols-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>🎯 main Actions</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="action-grid">
-                            <button class="action-btn" data-action="check-emails">📧 Check Emails</button>
-                            <button class="action-btn" data-action="calendar">📅 Calendar</button>
-                            <button class="action-btn" data-action="tasks">📋 Tasks</button>
-                            <button class="action-btn" data-action="restart-main">🔄 Restart</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h2>⚡ fast Actions</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="action-grid">
-                            <button class="action-btn" data-action="leaderboard">📊 Leaderboard</button>
-                            <button class="action-btn" data-action="morning-wake">🌅 Morning Wake</button>
-                            <button class="action-btn" data-action="nightly-summary">🌙 Nightly Summary</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h2>📚 learning Actions</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="action-grid">
-                            <button class="action-btn" data-action="list-guides">📖 List Guides</button>
-                            <button class="action-btn" data-action="recent-questions">❓ Recent Q's</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card span-3">
-                    <div class="card-header">
-                        <h2>💬 Send Custom Command</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="custom-command">
-                            <select id="target-agent">
-                                <option value="main">🎯 main</option>
-                                <option value="fast">⚡ fast</option>
-                                <option value="learning">📚 learning</option>
-                            </select>
-                            <input type="text" id="custom-command-input" placeholder="Enter command...">
-                            <button class="btn" id="send-command">Send</button>
-                        </div>
-                    </div>
-                </div>
+        <!-- TAB 6: FUNDRAISING -->
+        <div id="fundraising-tab" class="tab-content">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">💰 Fundraising</h2>
+                <div id="fundraising-content">טוען נתונים...</div>
             </div>
-        </section>
+        </div>
+
+        <!-- TAB 7: CRON JOBS -->
+        <div id="cron-tab" class="tab-content">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">⚙️ Cron Jobs</h2>
+                <div id="cron-content">טוען נתונים...</div>
+            </div>
+        </div>
+
+        <!-- TAB 8: MEMORY -->
+        <div id="memory-tab" class="tab-content">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">🧠 Memory</h2>
+                <div id="memory-content">טוען נתונים...</div>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>AlexBot Mission Control • Built with 💝 • <span id="footer-update">Last data: --</span></p>
-    </footer>
-
-    <script src="js/utils/format.js"></script>
-    <script src="js/data-loader.js"></script>
-    <script src="js/tabs/mission-control.js"></script>
-    <script src="js/tabs/alex-alexbot.js"></script>
-    <script src="js/tabs/agents.js"></script>
-    <script src="js/tabs/communications.js"></script>
-    <script src="js/tabs/cron.js"></script>
-    <script src="js/tabs/memory.js"></script>
-    <script src="js/tabs/playing-group.js"></script>
-    <script src="js/tabs/capabilities.js"></script>
-    <script src="js/tabs/analytics.js"></script>
-    <script src="js/tabs/actions.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
