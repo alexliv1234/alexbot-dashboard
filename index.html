@@ -168,7 +168,7 @@
                 <span class="text-3xl">🤖</span>
                 <div>
                     <h1 class="text-2xl font-bold text-gray-900">AlexBot Dashboard</h1>
-                    <p class="text-sm text-gray-500" id="last-update">עדכון אחרון: טוען...</p>
+                    <p class="text-sm text-gray-500" id="last-update">Last update: Loading...</p>
                 </div>
             </div>
             <div class="flex items-center gap-3">
@@ -185,28 +185,28 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex gap-2 overflow-x-auto py-3">
                 <button class="tab-btn active px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('overview')">
-                    🎯 סקירה כללית
+                    🎯 Overview
                 </button>
                 <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('main')">
                     🤖 Main Session
                 </button>
                 <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('playing')">
-                    🎮 משחקים
+                    🎮 Playing Group
                 </button>
                 <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('learning')">
-                    📚 למידה
+                    📚 Learning Group
                 </button>
                 <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('bots')">
-                    🤝 בוטים
+                    🤝 Bot Registry
                 </button>
                 <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('fundraising')">
-                    💰 גיוס הון
+                    💰 Fundraising
                 </button>
                 <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('cron')">
                     ⚙️ Cron Jobs
                 </button>
                 <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap" onclick="switchTab('memory')">
-                    🧠 זיכרון
+                    🧠 Memory
                 </button>
             </div>
         </div>
@@ -262,7 +262,7 @@
         <div id="main-tab" class="tab-content">
             <div class="card mb-6">
                 <h2 class="text-2xl font-bold mb-4">🤖 Main Session - אסיסטנט אישי</h2>
-                <div id="main-content">טוען נתונים...</div>
+                <div id="main-content">Loading data...</div>
             </div>
         </div>
 
@@ -270,50 +270,50 @@
         <div id="playing-tab" class="tab-content">
             <!-- Sub-tabs for Playing Group -->
             <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
-                <button class="filter-btn active" onclick="switchPlayingSubtab('people')">👥 דירוג אנשים</button>
-                <button class="filter-btn" onclick="switchPlayingSubtab('bots-scores')">🤖 דירוג בוטים</button>
-                <button class="filter-btn" onclick="switchPlayingSubtab('suggestions')">💡 הצעות</button>
-                <button class="filter-btn" onclick="switchPlayingSubtab('dailies')">📅 סיכומים יומיים</button>
-                <button class="filter-btn" onclick="switchPlayingSubtab('conversations')">💬 שיחות</button>
+                <button class="filter-btn active" onclick="switchPlayingSubtab('people')">👥 People Leaderboard</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('bots-scores')">🤖 Bot Leaderboard</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('suggestions')">💡 Suggestions</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('dailies')">📅 Daily Summaries</button>
+                <button class="filter-btn" onclick="switchPlayingSubtab('conversations')">💬 Conversations</button>
             </div>
 
             <!-- People Leaderboard -->
             <div id="playing-people" class="playing-subtab">
                 <div class="card">
-                    <h2 class="text-2xl font-bold mb-4">👥 דירוג אנשים</h2>
-                    <div id="people-leaderboard">טוען...</div>
+                    <h2 class="text-2xl font-bold mb-4">👥 People Leaderboard</h2>
+                    <div id="people-leaderboard">Loading...</div>
                 </div>
             </div>
 
             <!-- Bot Scores -->
             <div id="playing-bots-scores" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <h2 class="text-2xl font-bold mb-4">🤖 דירוג בוטים</h2>
-                    <div id="bot-leaderboard">טוען...</div>
+                    <h2 class="text-2xl font-bold mb-4">🤖 Bot Leaderboard</h2>
+                    <div id="bot-leaderboard">Loading...</div>
                 </div>
             </div>
 
             <!-- Suggestions -->
             <div id="playing-suggestions" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <h2 class="text-2xl font-bold mb-4">💡 הצעות לשיפור</h2>
-                    <div id="suggestions-list">טוען...</div>
+                    <h2 class="text-2xl font-bold mb-4">💡 Improvement Suggestions</h2>
+                    <div id="suggestions-list">Loading...</div>
                 </div>
             </div>
 
             <!-- Daily Summaries -->
             <div id="playing-dailies" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <h2 class="text-2xl font-bold mb-4">📅 סיכומים יומיים</h2>
-                    <div id="daily-summaries">טוען...</div>
+                    <h2 class="text-2xl font-bold mb-4">📅 Daily Summaries</h2>
+                    <div id="daily-summaries">Loading...</div>
                 </div>
             </div>
 
             <!-- Conversations -->
             <div id="playing-conversations" class="playing-subtab" style="display:none">
                 <div class="card">
-                    <h2 class="text-2xl font-bold mb-4">💬 שיחות per-sender</h2>
-                    <div id="conversation-logs">טוען...</div>
+                    <h2 class="text-2xl font-bold mb-4">💬 Per-Sender Conversations</h2>
+                    <div id="conversation-logs">Loading...</div>
                 </div>
             </div>
         </div>
@@ -322,7 +322,7 @@
         <div id="learning-tab" class="tab-content">
             <div class="card">
                 <h2 class="text-2xl font-bold mb-4">📚 Learning Group</h2>
-                <div id="learning-content">טוען נתונים...</div>
+                <div id="learning-content">Loading data...</div>
             </div>
         </div>
 
@@ -330,7 +330,7 @@
         <div id="bots-tab" class="tab-content">
             <div class="card">
                 <h2 class="text-2xl font-bold mb-4">🤝 Bot Registry</h2>
-                <div id="bots-content">טוען נתונים...</div>
+                <div id="bots-content">Loading data...</div>
             </div>
         </div>
 
@@ -338,7 +338,7 @@
         <div id="fundraising-tab" class="tab-content">
             <div class="card">
                 <h2 class="text-2xl font-bold mb-4">💰 Fundraising</h2>
-                <div id="fundraising-content">טוען נתונים...</div>
+                <div id="fundraising-content">Loading data...</div>
             </div>
         </div>
 
@@ -346,7 +346,7 @@
         <div id="cron-tab" class="tab-content">
             <div class="card">
                 <h2 class="text-2xl font-bold mb-4">⚙️ Cron Jobs</h2>
-                <div id="cron-content">טוען נתונים...</div>
+                <div id="cron-content">Loading data...</div>
             </div>
         </div>
 
@@ -354,7 +354,7 @@
         <div id="memory-tab" class="tab-content">
             <div class="card">
                 <h2 class="text-2xl font-bold mb-4">🧠 Memory</h2>
-                <div id="memory-content">טוען נתונים...</div>
+                <div id="memory-content">Loading data...</div>
             </div>
         </div>
     </main>

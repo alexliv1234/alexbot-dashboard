@@ -51,14 +51,14 @@ async function refreshData() {
 function updateLastUpdate() {
     const timestamp = dashboardData.overview?.timestamp || new Date().toISOString();
     const date = new Date(timestamp);
-    const formatted = date.toLocaleString('he-IL', {
+    const formatted = date.toLocaleString('en-US', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
     });
-    document.getElementById('last-update').textContent = `עדכון אחרון: ${formatted}`;
+    document.getElementById('last-update').textContent = `Last update: ${formatted}`;
 }
 
 // Switch main tabs
