@@ -229,8 +229,8 @@ function renderMainSession() {
                             <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                                 <span class="text-lg font-bold text-gray-400">#${i + 1}</span>
                                 <div class="flex-1">
-                                    <p class="font-medium text-gray-900">${session.label || session.kind || 'Unknown'}</p>
-                                    <p class="text-sm text-gray-500">${session.kind} • ${session.tokens?.toLocaleString() || 0} tokens</p>
+                                    <p class="font-medium text-gray-900">${session.label || 'Unknown'}</p>
+                                    <p class="text-sm text-gray-500">${session.tokens?.toLocaleString() || 0} tokens${session.channel ? ` • ${session.channel}` : ''}</p>
                                 </div>
                             </div>
                         `).join('')}
