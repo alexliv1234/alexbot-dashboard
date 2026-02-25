@@ -1,50 +1,25 @@
 {
-  "timestamp": "2026-02-25T08:25:03Z",
+  "timestamp": "2026-02-25T09:43:05.773Z",
+  "totals": {
+    "sessions": 122,
+    "tokens": {
+      "total": 2463478,
+      "today": 2463478
+    },
+    "cost": 7.390434
+  },
   "agents": {
     "main": {
-      "sessions": 0,
-      "tokens": 0,
-      "cost": 0
-    },
-    "fast": {
-      "sessions": 0,
-      "tokens": 0,
-      "cost": 0
-    },
-    "learning": {
-      "sessions": 0,
-      "tokens": 0,
-      "cost": 0
-    },
-    "bot-handler": {
-      "sessions": 0,
-      "tokens": 0,
-      "cost": 0
-    }
-  },
-  "totals": {
-    "sessions": 0,
-    "tokens": {
-      "total": 0,
-      "main": 0,
-      "fast": 0,
-      "learning": 0,
-      "bot-handler": 0
-    },
-    "cost": {
-      "total": 0,
-      "main": 0,
-      "fast": 0,
-      "learning": 0,
-      "bot-handler": 0
+      "sessions": 122,
+      "tokens": 2463478,
+      "cost": 7.390434
     }
   },
   "health": {
-    "cronJobsActive": 28,
-    "cronJobsTotal": 29,
     "botsActive": 2,
     "botsPending": 0,
-    "botsBlocked": 0,
-    "memoryFiles": 327
+    "memoryFiles": 297,
+    "cronJobsActive": 27,
+    "cronJobsTotal": 28
   }
 }
