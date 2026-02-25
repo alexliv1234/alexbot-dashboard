@@ -158,6 +158,82 @@
             color: white;
             border-color: #667eea;
         }
+        
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s;
+        }
+        
+        .modal-box {
+            background: white;
+            border-radius: 16px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            padding: 24px;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: between;
+            position: sticky;
+            top: 0;
+            background: white;
+            border-radius: 16px 16px 0 0;
+            z-index: 10;
+        }
+        
+        .modal-body {
+            padding: 24px;
+        }
+        
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #6b7280;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+        
+        .modal-close:hover {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+        
+        .clickable-row {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .clickable-row:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
