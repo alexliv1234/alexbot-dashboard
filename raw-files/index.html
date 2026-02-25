@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קבצים גולמיים - AlexBot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
+        * { font-family: 'Heebo', sans-serif; }
+        
+        .file-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 10px 0;
+            transition: all 0.2s;
+        }
+        
+        .file-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+        
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .file-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .type-md { background: #dbeafe; color: #1e40af; }
+        .type-json { background: #fef3c7; color: #92400e; }
+        .type-jsonl { background: #d1fae5; color: #065f46; }
+    </style>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 mb-8 text-white">
+            <h1 class="text-4xl font-bold mb-2">📁 קבצים גולמיים</h1>
+            <p class="text-indigo-100">כל הקבצים מ-"משחקים עם אלכס הבוט"</p>
+        </div>
+
+        <!-- Memory MD -->
+        <div class="file-card">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold">זיכרון הקבוצה</h2>
+                    <p class="text-gray-600 text-sm">memory/channels/playing-with-alexbot.md</p>
+                </div>
+                <span class="file-type type-md">MD</span>
+            </div>
+            <a href="playing-with-alexbot.md" target="_blank" 
+               class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
+                🔗 פתח קובץ
+            </a>
+        </div>
+
+        <!-- Scores JSON -->
+        <div class="file-card">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold">ציוני היום</h2>
+                    <p class="text-gray-600 text-sm">memory/channels/playing-with-alexbot-scores.json</p>
+                </div>
+                <span class="file-type type-json">JSON</span>
+            </div>
+            <a href="playing-with-alexbot-scores.json" target="_blank"
+               class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition">
+                🔗 פתח קובץ
+            </a>
+        </div>
+
+        <!-- Winners JSON -->
+        <div class="file-card">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold">מנצחים</h2>
+                    <p class="text-gray-600 text-sm">memory/channels/playing-with-alexbot-winners.json</p>
+                </div>
+                <span class="file-type type-json">JSON</span>
+            </div>
+            <a href="playing-with-alexbot-winners.json" target="_blank"
+               class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition">
+                🔗 פתח קובץ
+            </a>
+        </div>
+
+        <!-- Daily JSONL -->
+        <div class="file-card">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold">היסטוריה יומית</h2>
+                    <p class="text-gray-600 text-sm">memory/channels/playing-with-alexbot-daily/*.jsonl</p>
+                </div>
+                <span class="file-type type-jsonl">JSONL</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="playing-with-alexbot-daily/2026-02-09.jsonl" target="_blank"
+                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-center">
+                    📅 2026-02-09
+                </a>
+                <a href="playing-with-alexbot-daily/2026-02-11.jsonl" target="_blank"
+                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-center">
+                    📅 2026-02-11
+                </a>
+                <a href="playing-with-alexbot-daily/2026-02-12.jsonl" target="_blank"
+                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-center">
+                    📅 2026-02-12
+                </a>
+                <a href="playing-with-alexbot-daily/2026-02-15.jsonl" target="_blank"
+                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-center">
+                    📅 2026-02-15
+                </a>
+            </div>
+        </div>
+
+        <!-- Back to Dashboard -->
+        <div class="text-center mt-8">
+            <a href="../index.html" class="inline-block bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition">
+                ← חזרה לדשבורד
+            </a>
+        </div>
+    </div>
+</body>
+</html>
