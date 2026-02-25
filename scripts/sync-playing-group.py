@@ -44,30 +44,99 @@ def normalize_phone(phone):
     return phone
 
 def build_people_scores():
-    """Build people leaderboard from scores.json + daily logs + winners"""
+    """Build ALL-TIME people leaderboard from daily logs + scores.json + winners"""
+    
+    # Start with current scores (today's data)
     scores_path = WORKSPACE / "memory/channels/playing-with-alexbot-scores.json"
     scores_data = load_json(scores_path)
-    scores = scores_data.get('scores', {})
+    current_scores = scores_data.get('scores', {})
     
-    # Also aggregate from daily logs
+    # Aggregate ALL messages from daily logs (all-time history)
     daily_dir = WORKSPACE / "memory/channels/playing-with-alexbot-daily"
-    all_messages = []
+    people = {}
     
     if daily_dir.exists():
         for jsonl_file in sorted(daily_dir.glob("*.jsonl")):
-            all_messages.extend(load_jsonl(jsonl_file))
+            for entry in load_jsonl(jsonl_file):
+                # Format: {ts, from, phone, msg, replyTo, replyToPhone, origMsg, channel, chatId}
+                # I'm replying TO someone (replyTo/replyToPhone), and msg contains my reply with score
+                sender_phone = normalize_phone(entry.get('replyToPhone', ''))
+                sender_name = entry.get('replyTo', 'Unknown')
+                
+                if not sender_phone or sender_phone == 'bot':
+                    continue
+                
+                if sender_phone not in people:
+                    people[sender_phone] = {
+                        'jid': sender_phone,
+                        'name': sender_name,
+                        'totalScore': 0,
+                        'messages': 0,
+                        'creativity': 0,
+                        'challenge': 0,
+                        'humor': 0,
+                        'cleverness': 0,
+                        'engagement': 0,
+                        'broke': 0,
+                        'hacked': 0,
+                    }
+                
+                people[sender_phone]['messages'] += 1
+                
+                # Extract scores from my reply (entry['msg'] contains my message with score)
+                reply = entry.get('msg', '')
+                if '📊 **SCORE:' in reply or '📊 SCORE:' in reply:
+                    # Try to extract score numbers
+                    # Format: "🎨 Creativity: 5 | 🧠 Challenge: 6 | ..." or similar
+                    import re
+                    score_line = reply.split('📊')[1].split('\n')[0] if '📊' in reply else ''
+                    
+                    # Extract total score (e.g., "SCORE: 28/70")
+                    total_match = re.search(r'(\d+)/70', score_line)
+                    if total_match:
+                        people[sender_phone]['totalScore'] += int(total_match.group(1))
+                    
+                    # Try to extract individual categories more precisely
+                    # Look for the format: "🎨 Creativity: 5 |" or "Creativity: 5"
+                    for line in reply.split('\n'):
+                        # Only process lines that look like score breakdown
+                        if '|' in line and any(cat in line for cat in ['Creativity', 'Challenge', 'Humor', 'Cleverness', 'Engagement', 'Broke', 'Hacked']):
+                            if 'Creativity:' in line or '🎨' in line:
+                                m = re.search(r'Creativity:\s*(\d+)', line)
+                                if m: people[sender_phone]['creativity'] += int(m.group(1))
+                            if 'Challenge:' in line or '🧠' in line:
+                                m = re.search(r'Challenge:\s*(\d+)', line)
+                                if m: people[sender_phone]['challenge'] += int(m.group(1))
+                            if 'Humor:' in line or '😂' in line:
+                                m = re.search(r'Humor:\s*(\d+)', line)
+                                if m: people[sender_phone]['humor'] += int(m.group(1))
+                            if 'Cleverness:' in line or '💡' in line:
+                                m = re.search(r'Cleverness:\s*(\d+)', line)
+                                if m: people[sender_phone]['cleverness'] += int(m.group(1))
+                            if 'Engagement:' in line or '🔥' in line:
+                                m = re.search(r'Engagement:\s*(\d+)', line)
+                                if m: people[sender_phone]['engagement'] += int(m.group(1))
+                            if 'Broke:' in line or '🚨' in line:
+                                m = re.search(r'Broke:\s*(\d+)', line)
+                                if m: people[sender_phone]['broke'] += int(m.group(1))
+                            if 'Hacked:' in line or '🔓' in line:
+                                m = re.search(r'Hacked:\s*(\d+)', line)
+                                if m: people[sender_phone]['hacked'] += int(m.group(1))
     
-    # Build leaderboard
-    people = {}
-    for jid, data in scores.items():
+    # Also add today's scores (in case they're not in daily logs yet)
+    for jid, data in current_scores.items():
         norm_jid = normalize_phone(jid)
-        if norm_jid not in people:
+        if norm_jid in people:
+            # Already have historical data, just update totals
+            people[norm_jid]['totalScore'] += data.get('total', 0)
+            people[norm_jid]['messages'] += data.get('count', 0)
+        else:
+            # New person today
             people[norm_jid] = {
                 'jid': norm_jid,
                 'name': data.get('name', 'Unknown'),
                 'totalScore': data.get('total', 0),
                 'messages': data.get('count', 0),
-                'avgScore': data.get('average', 0),
                 'creativity': data.get('scores', {}).get('creativity', 0),
                 'challenge': data.get('scores', {}).get('challenge', 0),
                 'humor': data.get('scores', {}).get('humor', 0),
@@ -76,6 +145,13 @@ def build_people_scores():
                 'broke': data.get('scores', {}).get('broke', 0),
                 'hacked': data.get('scores', {}).get('hacked', 0),
             }
+    
+    # Calculate average scores
+    for person in people.values():
+        if person['messages'] > 0:
+            person['avgScore'] = round(person['totalScore'] / person['messages'], 1)
+        else:
+            person['avgScore'] = 0
     
     # Sort by total score descending
     leaderboard = sorted(people.values(), key=lambda x: x['totalScore'], reverse=True)
