@@ -1,35 +1,25 @@
 {
-  "timestamp": "2026-02-26T11:43:57.888Z",
+  "timestamp": "2026-02-26T12:43:58.799Z",
   "total": 111,
-  "active": 56,
+  "active": 54,
   "groups": 0,
   "dms": 0,
   "crons": 53,
   "topSessions": [
     {
-      "name": "Cron: Playing Group - Hourly Leaderboard",
-      "tokens": 55284,
-      "updated": "Feb 26, 01:00 PM"
-    },
-    {
-      "name": "Cron: Playing Group - Hourly Leaderboard",
-      "tokens": 55284,
-      "updated": "Feb 26, 01:00 PM"
-    },
-    {
-      "name": "Cron: session-monitor",
-      "tokens": 51830,
-      "updated": "Feb 26, 01:29 PM"
-    },
-    {
-      "name": "Cron: session-monitor",
-      "tokens": 51830,
-      "updated": "Feb 26, 01:29 PM"
+      "name": "Cron: moltbook-update",
+      "tokens": 57799,
+      "updated": "Feb 26, 02:32 PM"
     },
     {
       "name": "Cron: moltbook-update",
-      "tokens": 49380,
-      "updated": "Feb 26, 02:32 AM"
+      "tokens": 57799,
+      "updated": "Feb 26, 02:32 PM"
+    },
+    {
+      "name": "Cron: session-monitor",
+      "tokens": 51830,
+      "updated": "Feb 26, 01:29 PM"
     },
     {
       "name": "Cron: moltbook-update",
@@ -50,13 +40,22 @@
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
-      "updated": "Feb 26, 01:00 PM"
+      "updated": "Feb 26, 02:01 PM"
     },
     {
-      "name": "whatsapp:g-ai-transformation-guild",
-      "tokens": 42286,
-      "channel": "whatsapp",
-      "updated": "Feb 25, 05:54 PM"
+      "name": "Cron: session-monitor",
+      "tokens": 47032,
+      "updated": "Feb 26, 02:29 PM"
+    },
+    {
+      "name": "Cron: session-monitor",
+      "tokens": 47032,
+      "updated": "Feb 26, 02:29 PM"
+    },
+    {
+      "name": "Cron: session-monitor",
+      "tokens": 43410,
+      "updated": "Feb 26, 01:59 PM"
     }
   ]
 }
