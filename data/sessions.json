@@ -1,62 +1,62 @@
 {
-  "timestamp": "2026-02-25T09:41:13.103Z",
-  "total": 121,
-  "active": 67,
+  "timestamp": "2026-02-26T11:43:57.888Z",
+  "total": 111,
+  "active": 56,
   "groups": 0,
   "dms": 0,
-  "crons": 65,
+  "crons": 53,
   "topSessions": [
     {
-      "name": "Cron: למידה עצמית - לילה",
-      "tokens": 48389,
-      "updated": "Feb 25, 02:00 AM"
+      "name": "Cron: Playing Group - Hourly Leaderboard",
+      "tokens": 55284,
+      "updated": "Feb 26, 01:00 PM"
     },
     {
-      "name": "Cron: למידה עצמית - לילה",
-      "tokens": 48389,
-      "updated": "Feb 25, 02:00 AM"
+      "name": "Cron: Playing Group - Hourly Leaderboard",
+      "tokens": 55284,
+      "updated": "Feb 26, 01:00 PM"
+    },
+    {
+      "name": "Cron: session-monitor",
+      "tokens": 51830,
+      "updated": "Feb 26, 01:29 PM"
+    },
+    {
+      "name": "Cron: session-monitor",
+      "tokens": 51830,
+      "updated": "Feb 26, 01:29 PM"
     },
     {
       "name": "Cron: moltbook-update",
-      "tokens": 47724,
-      "updated": "Feb 25, 02:32 AM"
+      "tokens": 49380,
+      "updated": "Feb 26, 02:32 AM"
     },
     {
       "name": "Cron: moltbook-update",
-      "tokens": 47724,
-      "updated": "Feb 25, 02:32 AM"
+      "tokens": 49380,
+      "updated": "Feb 26, 02:32 AM"
+    },
+    {
+      "name": "Cron: Playing Group - Morning Wakeup",
+      "tokens": 48575,
+      "updated": "Feb 26, 09:55 AM"
+    },
+    {
+      "name": "Cron: Playing Group - Morning Wakeup",
+      "tokens": 48575,
+      "updated": "Feb 26, 09:55 AM"
     },
     {
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
-      "updated": "Feb 25, 11:01 AM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 46891,
-      "updated": "Feb 25, 11:39 AM"
-    },
-    {
-      "name": "Cron: moltbook-update",
-      "tokens": 43356,
-      "updated": "Feb 24, 02:32 AM"
+      "updated": "Feb 26, 01:00 PM"
     },
     {
       "name": "whatsapp:g-ai-transformation-guild",
       "tokens": 42286,
       "channel": "whatsapp",
-      "updated": "Feb 25, 06:56 AM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 40227,
-      "updated": "Feb 17, 04:59 PM"
-    },
-    {
-      "name": "Cron: moltbook-update",
-      "tokens": 39098,
-      "updated": "Feb 23, 02:32 PM"
+      "updated": "Feb 25, 05:54 PM"
     }
   ]
 }

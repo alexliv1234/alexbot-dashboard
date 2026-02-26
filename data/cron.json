@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-25T09:41:13.103Z",
+  "timestamp": "2026-02-26T11:43:57.888Z",
   "jobs": [
     {
       "name": "moltbook-update",
@@ -184,15 +184,22 @@
       "nextRun": "N/A"
     },
     {
-      "name": "תזכורת - חשבונות מים + עורך דין",
-      "schedule": "at",
+      "name": "Dashboard Auto-Update",
+      "schedule": "every",
       "enabled": true,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
     {
-      "name": "Dashboard Auto-Update",
-      "schedule": "every",
+      "name": "Fundraising - Morning Check",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Fundraising - Evening Report",
+      "schedule": "cron",
       "enabled": true,
       "sessionTarget": "main",
       "nextRun": "N/A"
