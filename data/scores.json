@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-02-26T12:43:58.799Z",
-  "date": "2026-02-26",
+  "timestamp": "2026-02-27T03:43:57.544Z",
+  "date": "2026-02-27",
   "players": [
     {
       "name": "אור",
@@ -19,6 +19,20 @@
     {
       "name": "S L",
       "phone": "+********6402",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "עירא",
+      "phone": "+********0404",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "CapsLock",
+      "phone": "+********0998",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
