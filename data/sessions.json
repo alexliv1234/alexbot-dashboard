@@ -1,17 +1,11 @@
 {
-  "timestamp": "2026-02-28T21:43:56.839Z",
-  "total": 134,
-  "active": 68,
+  "timestamp": "2026-02-28T22:43:57.435Z",
+  "total": 133,
+  "active": 67,
   "groups": 0,
   "dms": 0,
-  "crons": 66,
+  "crons": 65,
   "topSessions": [
-    {
-      "name": "whatsapp",
-      "tokens": 54120,
-      "channel": "whatsapp",
-      "updated": "Feb 28, 11:42 PM"
-    },
     {
       "name": "Cron: Teaching Quality - Daily Review",
       "tokens": 48805,
@@ -45,20 +39,25 @@
       "updated": "Feb 26, 06:01 PM"
     },
     {
+      "name": "Unknown",
+      "tokens": 44605,
+      "updated": "Feb 28, 11:57 PM"
+    },
+    {
       "name": "Cron: Teaching Quality - Daily Review",
       "tokens": 43966,
       "updated": "Feb 27, 10:00 PM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 42923,
-      "updated": "Feb 28, 11:43 PM"
     },
     {
       "name": "whatsapp:g-ai-transformation-guild",
       "tokens": 42286,
       "channel": "whatsapp",
       "updated": "Feb 27, 01:11 AM"
+    },
+    {
+      "name": "Unknown",
+      "tokens": 40545,
+      "updated": "Feb 27, 09:50 AM"
     }
   ]
 }
