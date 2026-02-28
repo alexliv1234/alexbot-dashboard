@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-28T03:43:56.813Z",
+  "timestamp": "2026-02-28T21:43:56.839Z",
   "jobs": [
     {
       "name": "moltbook-update",
@@ -200,13 +200,6 @@
     {
       "name": "Fundraising - Evening Report",
       "schedule": "cron",
-      "enabled": true,
-      "sessionTarget": "main",
-      "nextRun": "N/A"
-    },
-    {
-      "name": "Eran Bielski - Follow-up Check",
-      "schedule": "at",
       "enabled": true,
       "sessionTarget": "main",
       "nextRun": "N/A"

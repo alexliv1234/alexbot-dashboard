@@ -1,11 +1,33 @@
 {
-  "timestamp": "2026-02-28T03:43:56.813Z",
-  "total": 125,
-  "active": 63,
+  "timestamp": "2026-02-28T21:43:56.839Z",
+  "total": 134,
+  "active": 68,
   "groups": 0,
   "dms": 0,
-  "crons": 60,
+  "crons": 66,
   "topSessions": [
+    {
+      "name": "whatsapp",
+      "tokens": 54120,
+      "channel": "whatsapp",
+      "updated": "Feb 28, 11:42 PM"
+    },
+    {
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 48805,
+      "updated": "Feb 28, 10:00 PM"
+    },
+    {
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 48805,
+      "updated": "Feb 28, 10:00 PM"
+    },
+    {
+      "name": "whatsapp:g-clawders",
+      "tokens": 48619,
+      "channel": "whatsapp",
+      "updated": "Feb 28, 11:30 PM"
+    },
     {
       "name": "Cron: Playing Group - Morning Wakeup",
       "tokens": 48575,
@@ -28,35 +50,15 @@
       "updated": "Feb 27, 10:00 PM"
     },
     {
-      "name": "Cron: Teaching Quality - Daily Review",
-      "tokens": 43966,
-      "updated": "Feb 27, 10:00 PM"
+      "name": "Unknown",
+      "tokens": 42923,
+      "updated": "Feb 28, 11:43 PM"
     },
     {
       "name": "whatsapp:g-ai-transformation-guild",
       "tokens": 42286,
       "channel": "whatsapp",
       "updated": "Feb 27, 01:11 AM"
-    },
-    {
-      "name": "Cron: Session Health Check",
-      "tokens": 40896,
-      "updated": "Feb 28, 05:43 AM"
-    },
-    {
-      "name": "Cron: Session Health Check",
-      "tokens": 40896,
-      "updated": "Feb 28, 05:43 AM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 40545,
-      "updated": "Feb 27, 09:50 AM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 39855,
-      "updated": "Feb 28, 05:33 AM"
     }
   ]
 }
