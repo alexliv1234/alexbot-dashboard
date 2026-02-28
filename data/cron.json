@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-27T03:43:57.544Z",
+  "timestamp": "2026-02-28T03:43:56.813Z",
   "jobs": [
     {
       "name": "moltbook-update",
@@ -207,6 +207,62 @@
     {
       "name": "Eran Bielski - Follow-up Check",
       "schedule": "at",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Teaching Quality - Daily Review",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Playing Group - Morning Wakeup",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Playing Group - Nightly Summary",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Playing Group - Morning Wakeup",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Playing Group - Nightly Summary",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "GitHub Pages Update - Morning",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "GitHub Pages Update - Afternoon",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "GitHub Pages Update - Evening",
+      "schedule": "cron",
       "enabled": true,
       "sessionTarget": "main",
       "nextRun": "N/A"
