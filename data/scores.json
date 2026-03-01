@@ -1,10 +1,45 @@
 {
-  "timestamp": "2026-02-28T22:43:57.435Z",
-  "date": "2026-02-28",
+  "timestamp": "2026-03-01T16:44:02.231Z",
+  "date": "2026-03-01",
   "players": [
+    {
+      "name": "S L",
+      "phone": "+********6402",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
     {
       "name": "אור",
       "phone": "+********1072",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "ZS",
+      "phone": "+********4761",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": ".",
+      "phone": "+********3377",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "Neriya Bar-lev",
+      "phone": "+********6392",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "Ori Nachum",
+      "phone": "+********4321",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
@@ -17,22 +52,29 @@
       "avgScore": 0
     },
     {
-      "name": "S L",
-      "phone": "+********6402",
+      "name": "Efi P",
+      "phone": "+********5001",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
     },
     {
-      "name": "עירא",
+      "name": "ilan benborhoum",
+      "phone": "+********0050",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "Ira @ Work עירא",
       "phone": "+********0404",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
     },
     {
-      "name": "CapsLock",
-      "phone": "+********0998",
+      "name": "הילה",
+      "phone": "+********0395",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
