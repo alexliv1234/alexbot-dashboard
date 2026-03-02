@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-02T19:46:23.824Z",
-  "total": 116,
-  "active": 55,
+  "timestamp": "2026-03-02T20:16:35.612Z",
+  "total": 117,
+  "active": 56,
   "groups": 0,
   "dms": 0,
-  "crons": 44,
+  "crons": 45,
   "topSessions": [
     {
       "name": "whatsapp",
@@ -40,7 +40,7 @@
       "name": "whatsapp",
       "tokens": 41701,
       "channel": "whatsapp",
-      "updated": "Mar 2, 09:22 PM"
+      "updated": "Mar 2, 10:13 PM"
     },
     {
       "name": "Unknown",
