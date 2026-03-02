@@ -1,16 +1,11 @@
 {
-  "timestamp": "2026-03-02T18:47:29.165Z",
+  "timestamp": "2026-03-02T19:16:21.957Z",
   "total": 116,
   "active": 55,
   "groups": 0,
   "dms": 0,
   "crons": 44,
   "topSessions": [
-    {
-      "name": "Unknown",
-      "tokens": 64511,
-      "updated": "Mar 2, 08:47 PM"
-    },
     {
       "name": "whatsapp",
       "tokens": 54761,
@@ -61,6 +56,11 @@
       "name": "Cron: Playing Group - Nightly Summary",
       "tokens": 40616,
       "updated": "Mar 2, 06:00 PM"
+    },
+    {
+      "name": "Unknown",
+      "tokens": 40545,
+      "updated": "Feb 27, 09:50 AM"
     }
   ]
 }
