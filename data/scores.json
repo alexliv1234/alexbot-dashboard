@@ -1,80 +1,17 @@
 {
-  "timestamp": "2026-03-02T05:43:57.284Z",
+  "timestamp": "2026-03-02T16:45:14.128Z",
   "date": "2026-03-02",
   "players": [
     {
-      "name": "S L",
-      "phone": "+********6402",
+      "name": "Ehud",
+      "phone": "+********6214",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
     },
     {
-      "name": "אור",
-      "phone": "+********1072",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "ZS",
-      "phone": "+********4761",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": ".",
-      "phone": "+********3377",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Neriya Bar-lev",
-      "phone": "+********6392",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Ori Nachum",
-      "phone": "+********4321",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Avi Vaisenberger",
-      "phone": "+********6550",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Efi P",
-      "phone": "+********5001",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "ilan benborhoum",
-      "phone": "+********0050",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Ira @ Work עירא",
-      "phone": "+********0404",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "הילה",
-      "phone": "+********0395",
+      "name": "A",
+      "phone": "+*******5269",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
