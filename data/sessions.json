@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-02T21:17:10.190Z",
-  "total": 118,
-  "active": 57,
+  "timestamp": "2026-03-02T21:46:22.966Z",
+  "total": 117,
+  "active": 56,
   "groups": 0,
   "dms": 0,
-  "crons": 46,
+  "crons": 45,
   "topSessions": [
     {
       "name": "whatsapp",
