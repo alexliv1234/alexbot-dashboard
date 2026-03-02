@@ -1,11 +1,16 @@
 {
-  "timestamp": "2026-03-02T18:15:55.048Z",
-  "total": 115,
-  "active": 35,
+  "timestamp": "2026-03-02T18:47:29.165Z",
+  "total": 116,
+  "active": 55,
   "groups": 0,
   "dms": 0,
   "crons": 44,
   "topSessions": [
+    {
+      "name": "Unknown",
+      "tokens": 64511,
+      "updated": "Mar 2, 08:47 PM"
+    },
     {
       "name": "whatsapp",
       "tokens": 54761,
@@ -34,18 +39,13 @@
       "name": "whatsapp:g-ai-transformation-guild",
       "tokens": 42286,
       "channel": "whatsapp",
-      "updated": "Mar 2, 09:35 AM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 41912,
-      "updated": "Mar 2, 08:15 PM"
+      "updated": "Mar 2, 08:43 PM"
     },
     {
       "name": "whatsapp",
       "tokens": 41701,
       "channel": "whatsapp",
-      "updated": "Mar 2, 06:59 PM"
+      "updated": "Mar 2, 08:38 PM"
     },
     {
       "name": "Unknown",
