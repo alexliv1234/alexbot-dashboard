@@ -1,16 +1,32 @@
 {
-  "timestamp": "2026-03-01T16:44:02.231Z",
-  "total": 92,
-  "active": 33,
+  "timestamp": "2026-03-02T05:43:57.284Z",
+  "total": 118,
+  "active": 55,
   "groups": 0,
   "dms": 0,
-  "crons": 22,
+  "crons": 47,
   "topSessions": [
+    {
+      "name": "Cron: למידה עצמית - לילה",
+      "tokens": 52899,
+      "updated": "Mar 2, 02:00 AM"
+    },
+    {
+      "name": "Cron: למידה עצמית - לילה",
+      "tokens": 52899,
+      "updated": "Mar 2, 02:00 AM"
+    },
+    {
+      "name": "whatsapp",
+      "tokens": 51618,
+      "channel": "whatsapp",
+      "updated": "Mar 1, 10:52 PM"
+    },
     {
       "name": "whatsapp:g-clawders",
       "tokens": 47992,
       "channel": "whatsapp",
-      "updated": "Mar 1, 06:03 PM"
+      "updated": "Mar 1, 09:23 PM"
     },
     {
       "name": "whatsapp",
@@ -19,26 +35,20 @@
       "updated": "Mar 1, 06:01 PM"
     },
     {
-      "name": "whatsapp",
-      "tokens": 44036,
-      "channel": "whatsapp",
-      "updated": "Mar 1, 12:04 PM"
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 42574,
+      "updated": "Mar 1, 10:03 PM"
     },
     {
-      "name": "Cron: session-monitor",
-      "tokens": 43487,
-      "updated": "Mar 1, 06:29 PM"
-    },
-    {
-      "name": "Cron: session-monitor",
-      "tokens": 43487,
-      "updated": "Mar 1, 06:29 PM"
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 42574,
+      "updated": "Mar 1, 10:03 PM"
     },
     {
       "name": "whatsapp:g-clawders-2",
       "tokens": 42508,
       "channel": "whatsapp",
-      "updated": "Mar 1, 06:18 PM"
+      "updated": "Mar 1, 10:00 PM"
     },
     {
       "name": "whatsapp:g-ai-transformation-guild",
@@ -50,17 +60,7 @@
       "name": "whatsapp",
       "tokens": 41701,
       "channel": "whatsapp",
-      "updated": "Mar 1, 05:52 PM"
-    },
-    {
-      "name": "Cron: Session Health Check",
-      "tokens": 41671,
-      "updated": "Mar 1, 06:43 PM"
-    },
-    {
-      "name": "Cron: Session Health Check",
-      "tokens": 41671,
-      "updated": "Mar 1, 06:43 PM"
+      "updated": "Mar 2, 07:30 AM"
     }
   ]
 }
