@@ -1,21 +1,16 @@
 {
-  "timestamp": "2026-03-03T00:16:25.026Z",
-  "total": 118,
-  "active": 57,
+  "timestamp": "2026-03-03T00:46:47.266Z",
+  "total": 119,
+  "active": 56,
   "groups": 0,
   "dms": 0,
-  "crons": 46,
+  "crons": 47,
   "topSessions": [
     {
       "name": "whatsapp",
       "tokens": 54761,
       "channel": "whatsapp",
       "updated": "Mar 2, 05:34 PM"
-    },
-    {
-      "name": "Cron: למידה עצמית - לילה",
-      "tokens": 50961,
-      "updated": "Mar 3, 02:00 AM"
     },
     {
       "name": "Cron: למידה עצמית - לילה",
@@ -56,6 +51,11 @@
       "name": "Unknown",
       "tokens": 41192,
       "updated": "Mar 2, 07:38 PM"
+    },
+    {
+      "name": "Cron: Playing Group - Nightly Summary",
+      "tokens": 40616,
+      "updated": "Mar 2, 06:00 PM"
     },
     {
       "name": "Cron: Playing Group - Nightly Summary",
