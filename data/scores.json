@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T09:19:23.937Z",
+  "timestamp": "2026-03-03T09:49:28.863Z",
   "date": "2026-03-03",
   "players": [
     {
@@ -12,6 +12,20 @@
     {
       "name": "Efi P",
       "phone": "+********5001",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": ".",
+      "phone": "+********3377",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "נחמיה ר",
+      "phone": "+********4492",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
