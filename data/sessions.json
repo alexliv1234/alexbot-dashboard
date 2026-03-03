@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-03T08:48:12.925Z",
-  "total": 130,
-  "active": 68,
+  "timestamp": "2026-03-03T09:19:23.937Z",
+  "total": 132,
+  "active": 70,
   "groups": 0,
   "dms": 0,
-  "crons": 58,
+  "crons": 60,
   "topSessions": [
     {
       "name": "whatsapp",
@@ -16,31 +16,31 @@
       "name": "whatsapp:g-clawders",
       "tokens": 47992,
       "channel": "whatsapp",
-      "updated": "Mar 2, 06:03 PM"
+      "updated": "Mar 3, 11:00 AM"
     },
     {
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
-      "updated": "Mar 3, 09:56 AM"
+      "updated": "Mar 3, 11:01 AM"
     },
     {
       "name": "whatsapp:g-clawders-2",
       "tokens": 42508,
       "channel": "whatsapp",
-      "updated": "Mar 2, 06:02 PM"
+      "updated": "Mar 3, 11:19 AM"
     },
     {
       "name": "whatsapp:g-ai-transformation-guild",
       "tokens": 42286,
       "channel": "whatsapp",
-      "updated": "Mar 2, 08:43 PM"
+      "updated": "Mar 3, 10:54 AM"
     },
     {
       "name": "whatsapp",
       "tokens": 41701,
       "channel": "whatsapp",
-      "updated": "Mar 3, 10:47 AM"
+      "updated": "Mar 3, 11:13 AM"
     },
     {
       "name": "Unknown",
