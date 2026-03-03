@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T22:49:55.826Z",
+  "timestamp": "2026-03-03T23:19:56.360Z",
   "total": 139,
   "active": 74,
   "groups": 0,
@@ -28,11 +28,6 @@
       "updated": "Mar 3, 10:32 PM"
     },
     {
-      "name": "Cron: media-ready-check",
-      "tokens": 47486,
-      "updated": "Mar 4, 12:26 AM"
-    },
-    {
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
@@ -59,6 +54,12 @@
       "tokens": 42508,
       "channel": "whatsapp",
       "updated": "Mar 3, 10:33 PM"
+    },
+    {
+      "name": "whatsapp:g-ai-transformation-guild",
+      "tokens": 42286,
+      "channel": "whatsapp",
+      "updated": "Mar 4, 12:13 AM"
     }
   ]
 }
