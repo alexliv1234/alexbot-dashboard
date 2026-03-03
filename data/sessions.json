@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T21:19:55.303Z",
+  "timestamp": "2026-03-03T21:49:56.485Z",
   "total": 139,
   "active": 74,
   "groups": 0,
@@ -9,7 +9,7 @@
     {
       "name": "Unknown",
       "tokens": 51925,
-      "updated": "Mar 3, 10:59 PM"
+      "updated": "Mar 3, 11:28 PM"
     },
     {
       "name": "Cron: Playing Group - Nightly Summary",
@@ -26,11 +26,6 @@
       "tokens": 47992,
       "channel": "whatsapp",
       "updated": "Mar 3, 10:32 PM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 47966,
-      "updated": "Mar 3, 11:06 PM"
     },
     {
       "name": "whatsapp",
@@ -59,6 +54,12 @@
       "tokens": 42508,
       "channel": "whatsapp",
       "updated": "Mar 3, 10:33 PM"
+    },
+    {
+      "name": "whatsapp:g-ai-transformation-guild",
+      "tokens": 42286,
+      "channel": "whatsapp",
+      "updated": "Mar 3, 09:55 PM"
     }
   ]
 }
