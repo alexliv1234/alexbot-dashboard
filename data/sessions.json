@@ -1,11 +1,21 @@
 {
-  "timestamp": "2026-03-03T09:49:28.863Z",
-  "total": 132,
-  "active": 70,
+  "timestamp": "2026-03-03T10:20:17.102Z",
+  "total": 134,
+  "active": 72,
   "groups": 0,
   "dms": 0,
-  "crons": 60,
+  "crons": 62,
   "topSessions": [
+    {
+      "name": "Cron: Playing Group - Hourly Leaderboard",
+      "tokens": 59959,
+      "updated": "Mar 3, 12:00 PM"
+    },
+    {
+      "name": "Cron: Playing Group - Hourly Leaderboard",
+      "tokens": 59959,
+      "updated": "Mar 3, 12:00 PM"
+    },
     {
       "name": "whatsapp:g-clawders",
       "tokens": 47992,
@@ -16,7 +26,7 @@
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
-      "updated": "Mar 3, 11:01 AM"
+      "updated": "Mar 3, 12:00 PM"
     },
     {
       "name": "whatsapp",
@@ -40,7 +50,7 @@
       "name": "whatsapp",
       "tokens": 41701,
       "channel": "whatsapp",
-      "updated": "Mar 3, 11:39 AM"
+      "updated": "Mar 3, 12:19 PM"
     },
     {
       "name": "Unknown",
@@ -51,16 +61,6 @@
       "name": "Cron: Playing Group - Nightly Summary",
       "tokens": 40616,
       "updated": "Mar 2, 06:00 PM"
-    },
-    {
-      "name": "Cron: Playing Group - Nightly Summary",
-      "tokens": 40616,
-      "updated": "Mar 2, 06:00 PM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 40545,
-      "updated": "Feb 27, 09:50 AM"
     }
   ]
 }

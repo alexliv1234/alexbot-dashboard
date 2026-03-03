@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T09:49:28.863Z",
+  "timestamp": "2026-03-03T10:20:17.102Z",
   "date": "2026-03-03",
   "players": [
     {
@@ -26,6 +26,13 @@
     {
       "name": "נחמיה ר",
       "phone": "+********4492",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "Bar Harel",
+      "phone": "+********4044",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
