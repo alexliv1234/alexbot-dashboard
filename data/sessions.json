@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T17:19:56.947Z",
+  "timestamp": "2026-03-03T17:49:50.772Z",
   "total": 139,
   "active": 74,
   "groups": 0,
@@ -7,19 +7,19 @@
   "crons": 66,
   "topSessions": [
     {
-      "name": "Cron: Playing Group - Nightly Summary",
-      "tokens": 48033,
-      "updated": "Mar 3, 06:00 PM"
-    },
-    {
-      "name": "Cron: Playing Group - Nightly Summary",
-      "tokens": 48033,
-      "updated": "Mar 3, 06:00 PM"
-    },
-    {
       "name": "Cron: media-ready-check",
-      "tokens": 48026,
-      "updated": "Mar 3, 07:16 PM"
+      "tokens": 48296,
+      "updated": "Mar 3, 07:36 PM"
+    },
+    {
+      "name": "Cron: Playing Group - Nightly Summary",
+      "tokens": 48033,
+      "updated": "Mar 3, 06:00 PM"
+    },
+    {
+      "name": "Cron: Playing Group - Nightly Summary",
+      "tokens": 48033,
+      "updated": "Mar 3, 06:00 PM"
     },
     {
       "name": "Cron: media-ready-check",
@@ -39,11 +39,6 @@
       "updated": "Mar 3, 06:01 PM"
     },
     {
-      "name": "Cron: media-ready-check",
-      "tokens": 46999,
-      "updated": "Mar 3, 06:56 PM"
-    },
-    {
       "name": "whatsapp",
       "tokens": 46451,
       "channel": "whatsapp",
@@ -60,6 +55,11 @@
       "tokens": 42286,
       "channel": "whatsapp",
       "updated": "Mar 3, 10:54 AM"
+    },
+    {
+      "name": "Unknown",
+      "tokens": 41729,
+      "updated": "Mar 3, 06:03 PM"
     }
   ]
 }
