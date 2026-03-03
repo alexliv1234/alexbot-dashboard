@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T04:47:15.226Z",
+  "timestamp": "2026-03-03T05:17:25.411Z",
   "total": 121,
   "active": 59,
   "groups": 0,
@@ -25,6 +25,11 @@
       "updated": "Mar 2, 06:01 PM"
     },
     {
+      "name": "Unknown",
+      "tokens": 45046,
+      "updated": "Mar 3, 07:17 AM"
+    },
+    {
       "name": "whatsapp:g-clawders-2",
       "tokens": 42508,
       "channel": "whatsapp",
@@ -35,11 +40,6 @@
       "tokens": 42286,
       "channel": "whatsapp",
       "updated": "Mar 2, 08:43 PM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 42181,
-      "updated": "Mar 3, 06:47 AM"
     },
     {
       "name": "whatsapp",
