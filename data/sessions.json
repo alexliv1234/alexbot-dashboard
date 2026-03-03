@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-03T05:47:52.886Z",
-  "total": 124,
-  "active": 62,
+  "timestamp": "2026-03-03T06:17:34.561Z",
+  "total": 123,
+  "active": 61,
   "groups": 0,
   "dms": 0,
-  "crons": 52,
+  "crons": 51,
   "topSessions": [
     {
       "name": "whatsapp",
@@ -26,8 +26,8 @@
     },
     {
       "name": "Unknown",
-      "tokens": 44919,
-      "updated": "Mar 3, 07:47 AM"
+      "tokens": 45527,
+      "updated": "Mar 3, 08:17 AM"
     },
     {
       "name": "whatsapp:g-clawders-2",
