@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T14:49:50.005Z",
+  "timestamp": "2026-03-03T15:19:48.379Z",
   "total": 139,
   "active": 74,
   "groups": 0,
@@ -7,31 +7,26 @@
   "crons": 66,
   "topSessions": [
     {
-      "name": "Cron: media-ready-check",
-      "tokens": 49040,
-      "updated": "Mar 3, 04:26 PM"
-    },
-    {
       "name": "whatsapp:g-clawders",
       "tokens": 47992,
       "channel": "whatsapp",
-      "updated": "Mar 3, 03:03 PM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 47926,
-      "updated": "Mar 3, 04:16 PM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 47869,
-      "updated": "Mar 3, 04:36 PM"
+      "updated": "Mar 3, 04:58 PM"
     },
     {
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
-      "updated": "Mar 3, 04:01 PM"
+      "updated": "Mar 3, 05:01 PM"
+    },
+    {
+      "name": "Cron: media-ready-check",
+      "tokens": 46850,
+      "updated": "Mar 3, 05:16 PM"
+    },
+    {
+      "name": "Cron: media-ready-check",
+      "tokens": 46850,
+      "updated": "Mar 3, 05:16 PM"
     },
     {
       "name": "whatsapp",
@@ -54,13 +49,18 @@
     {
       "name": "Unknown",
       "tokens": 41729,
-      "updated": "Mar 3, 04:04 PM"
+      "updated": "Mar 3, 05:04 PM"
     },
     {
       "name": "whatsapp",
       "tokens": 41701,
       "channel": "whatsapp",
       "updated": "Mar 3, 04:47 PM"
+    },
+    {
+      "name": "Unknown",
+      "tokens": 41192,
+      "updated": "Mar 2, 07:38 PM"
     }
   ]
 }
