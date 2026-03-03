@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-03T07:47:09.710Z",
-  "total": 123,
-  "active": 61,
+  "timestamp": "2026-03-03T08:17:44.819Z",
+  "total": 129,
+  "active": 67,
   "groups": 0,
   "dms": 0,
-  "crons": 51,
+  "crons": 57,
   "topSessions": [
     {
       "name": "whatsapp",
@@ -22,7 +22,7 @@
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
-      "updated": "Mar 2, 06:01 PM"
+      "updated": "Mar 3, 09:56 AM"
     },
     {
       "name": "whatsapp:g-clawders-2",
