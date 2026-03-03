@@ -1,21 +1,16 @@
 {
-  "timestamp": "2026-03-03T02:16:57.906Z",
-  "total": 122,
-  "active": 59,
+  "timestamp": "2026-03-03T02:46:57.516Z",
+  "total": 120,
+  "active": 57,
   "groups": 0,
   "dms": 0,
-  "crons": 50,
+  "crons": 48,
   "topSessions": [
     {
       "name": "whatsapp",
       "tokens": 54761,
       "channel": "whatsapp",
       "updated": "Mar 2, 05:34 PM"
-    },
-    {
-      "name": "Cron: למידה עצמית - לילה",
-      "tokens": 50961,
-      "updated": "Mar 3, 02:00 AM"
     },
     {
       "name": "whatsapp:g-clawders",
@@ -61,6 +56,11 @@
       "name": "Cron: Playing Group - Nightly Summary",
       "tokens": 40616,
       "updated": "Mar 2, 06:00 PM"
+    },
+    {
+      "name": "Unknown",
+      "tokens": 40545,
+      "updated": "Feb 27, 09:50 AM"
     }
   ]
 }
