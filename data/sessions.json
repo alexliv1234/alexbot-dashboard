@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T22:19:57.351Z",
+  "timestamp": "2026-03-03T22:49:55.826Z",
   "total": 139,
   "active": 74,
   "groups": 0,
@@ -28,20 +28,15 @@
       "updated": "Mar 3, 10:32 PM"
     },
     {
+      "name": "Cron: media-ready-check",
+      "tokens": 47486,
+      "updated": "Mar 4, 12:26 AM"
+    },
+    {
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
       "updated": "Mar 3, 06:01 PM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 47114,
-      "updated": "Mar 3, 11:56 PM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 46968,
-      "updated": "Mar 4, 12:06 AM"
     },
     {
       "name": "whatsapp",
@@ -58,6 +53,12 @@
       "name": "Cron: Teaching Quality - Daily Review",
       "tokens": 44604,
       "updated": "Mar 3, 10:00 PM"
+    },
+    {
+      "name": "whatsapp:g-clawders-2",
+      "tokens": 42508,
+      "channel": "whatsapp",
+      "updated": "Mar 3, 10:33 PM"
     }
   ]
 }
