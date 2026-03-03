@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T19:49:51.340Z",
+  "timestamp": "2026-03-03T20:19:56.833Z",
   "total": 139,
   "active": 74,
   "groups": 0,
@@ -29,38 +29,36 @@
       "updated": "Mar 3, 06:01 PM"
     },
     {
+      "name": "Cron: media-ready-check",
+      "tokens": 46882,
+      "updated": "Mar 3, 09:56 PM"
+    },
+    {
       "name": "whatsapp",
       "tokens": 46451,
       "channel": "whatsapp",
       "updated": "Mar 3, 02:56 PM"
     },
     {
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 44604,
+      "updated": "Mar 3, 10:00 PM"
+    },
+    {
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 44604,
+      "updated": "Mar 3, 10:00 PM"
+    },
+    {
       "name": "Unknown",
       "tokens": 43023,
-      "updated": "Mar 3, 09:35 PM"
+      "updated": "Mar 3, 10:01 PM"
     },
     {
       "name": "whatsapp:g-clawders-2",
       "tokens": 42508,
       "channel": "whatsapp",
       "updated": "Mar 3, 11:40 AM"
-    },
-    {
-      "name": "whatsapp:g-ai-transformation-guild",
-      "tokens": 42286,
-      "channel": "whatsapp",
-      "updated": "Mar 3, 10:54 AM"
-    },
-    {
-      "name": "whatsapp",
-      "tokens": 41701,
-      "channel": "whatsapp",
-      "updated": "Mar 3, 09:01 PM"
-    },
-    {
-      "name": "Unknown",
-      "tokens": 41192,
-      "updated": "Mar 2, 07:38 PM"
     }
   ]
 }
