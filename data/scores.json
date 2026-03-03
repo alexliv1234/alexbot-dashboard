@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T15:19:48.379Z",
+  "timestamp": "2026-03-03T15:49:49.813Z",
   "date": "2026-03-03",
   "players": [
     {
@@ -33,6 +33,13 @@
     {
       "name": "Bar Harel",
       "phone": "+********4044",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    },
+    {
+      "name": "Avi Vaisenberger",
+      "phone": "+********6550",
       "total": 0,
       "messageCount": 0,
       "avgScore": 0
