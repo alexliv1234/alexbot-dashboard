@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-04T04:19:59.069Z",
-  "total": 141,
-  "active": 76,
+  "timestamp": "2026-03-04T04:53:29.128Z",
+  "total": 147,
+  "active": 82,
   "groups": 0,
   "dms": 0,
-  "crons": 68,
+  "crons": 74,
   "topSessions": [
     {
       "name": "Unknown",
-      "tokens": 51925,
-      "updated": "Mar 3, 11:28 PM"
+      "tokens": 77319,
+      "updated": "Mar 4, 06:53 AM"
     },
     {
       "name": "Cron: למידה עצמית - לילה",
