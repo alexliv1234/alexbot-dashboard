@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-04T03:49:58.325Z",
+  "timestamp": "2026-03-04T04:19:59.069Z",
   "total": 141,
   "active": 76,
   "groups": 0,
@@ -20,11 +20,6 @@
       "name": "Cron: למידה עצמית - לילה",
       "tokens": 49114,
       "updated": "Mar 4, 02:00 AM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 48119,
-      "updated": "Mar 4, 05:37 AM"
     },
     {
       "name": "Cron: Playing Group - Nightly Summary",
@@ -53,6 +48,11 @@
       "tokens": 46451,
       "channel": "whatsapp",
       "updated": "Mar 3, 02:56 PM"
+    },
+    {
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 44604,
+      "updated": "Mar 3, 10:00 PM"
     },
     {
       "name": "Cron: Teaching Quality - Daily Review",
