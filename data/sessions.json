@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-04T00:19:55.815Z",
+  "timestamp": "2026-03-04T00:49:56.991Z",
   "total": 141,
   "active": 76,
   "groups": 0,
@@ -22,11 +22,6 @@
       "updated": "Mar 4, 02:00 AM"
     },
     {
-      "name": "Cron: media-ready-check",
-      "tokens": 49065,
-      "updated": "Mar 4, 01:56 AM"
-    },
-    {
       "name": "Cron: Playing Group - Nightly Summary",
       "tokens": 48033,
       "updated": "Mar 3, 06:00 PM"
@@ -43,6 +38,16 @@
       "updated": "Mar 3, 10:32 PM"
     },
     {
+      "name": "Cron: media-ready-check",
+      "tokens": 47929,
+      "updated": "Mar 4, 02:46 AM"
+    },
+    {
+      "name": "Cron: media-ready-check",
+      "tokens": 47929,
+      "updated": "Mar 4, 02:46 AM"
+    },
+    {
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
@@ -53,11 +58,6 @@
       "tokens": 46451,
       "channel": "whatsapp",
       "updated": "Mar 3, 02:56 PM"
-    },
-    {
-      "name": "Cron: Teaching Quality - Daily Review",
-      "tokens": 44604,
-      "updated": "Mar 3, 10:00 PM"
     }
   ]
 }
