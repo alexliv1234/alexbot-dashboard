@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-04T04:53:29.128Z",
+  "timestamp": "2026-03-04T05:20:10.917Z",
   "total": 147,
   "active": 82,
   "groups": 0,
@@ -8,8 +8,8 @@
   "topSessions": [
     {
       "name": "Unknown",
-      "tokens": 77319,
-      "updated": "Mar 4, 06:53 AM"
+      "tokens": 55162,
+      "updated": "Mar 4, 07:10 AM"
     },
     {
       "name": "Cron: למידה עצמית - לילה",
