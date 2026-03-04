@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-04T00:49:56.991Z",
+  "timestamp": "2026-03-04T01:19:53.798Z",
   "total": 141,
   "active": 76,
   "groups": 0,
@@ -22,6 +22,11 @@
       "updated": "Mar 4, 02:00 AM"
     },
     {
+      "name": "Cron: media-ready-check",
+      "tokens": 49036,
+      "updated": "Mar 4, 03:06 AM"
+    },
+    {
       "name": "Cron: Playing Group - Nightly Summary",
       "tokens": 48033,
       "updated": "Mar 3, 06:00 PM"
@@ -36,11 +41,6 @@
       "tokens": 47992,
       "channel": "whatsapp",
       "updated": "Mar 3, 10:32 PM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 47929,
-      "updated": "Mar 4, 02:46 AM"
     },
     {
       "name": "Cron: media-ready-check",
