@@ -1,52 +1,52 @@
 {
-  "timestamp": "2026-03-04T10:50:22.680Z",
+  "timestamp": "2026-03-04T11:34:44.085Z",
   "jobs": [
     {
       "name": "moltbook-update",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "morning-briefing",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "media-ready-check",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Call Recording Check",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "session-monitor",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Playing Group - Nightly Summary",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Playing Group - Morning Wakeup",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
@@ -60,14 +60,14 @@
     {
       "name": "Playing Group - Hourly Leaderboard",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Playing Group - Broke Score Check",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
@@ -81,49 +81,49 @@
     {
       "name": "Git Auto-Commit",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Bot Message Check",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Bot Registration Scanner",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Session Health Check",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "User Pattern Analysis",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Learning Group - Daily Insights",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
     {
       "name": "Learning Group - Weekly Summary",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
@@ -179,14 +179,14 @@
     {
       "name": "למידה עצמית - לילה",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "Dashboard Auto-Update",
       "schedule": "every",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
@@ -200,64 +200,120 @@
     {
       "name": "Fundraising - Evening Report",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
     {
       "name": "Teaching Quality - Daily Review",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "International Playing Group - Morning Wakeup",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
     {
       "name": "International Playing Group - Nightly Summary",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
     {
       "name": "International Playing Group - Morning Wakeup",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "International Playing Group - Nightly Summary",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
       "name": "GitHub Pages Update - Morning",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
     {
       "name": "GitHub Pages Update - Afternoon",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
       "nextRun": "N/A"
     },
     {
       "name": "GitHub Pages Update - Evening",
       "schedule": "cron",
-      "enabled": true,
+      "enabled": false,
       "sessionTarget": "main",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Playing Group - Hourly Challenge",
+      "schedule": "cron",
+      "enabled": false,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Fundraising Group - Hourly Insight",
+      "schedule": "cron",
+      "enabled": false,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Learning Group - Hourly Tip",
+      "schedule": "cron",
+      "enabled": false,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Auto-create daily memory file",
+      "schedule": "cron",
+      "enabled": false,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Hourly Leaderboard",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Morning Wakeup",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Nightly Summary",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Playing Group - Broke Score Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
       "nextRun": "N/A"
     },
     {
@@ -268,7 +324,14 @@
       "nextRun": "N/A"
     },
     {
-      "name": "International Fundraising Group - Hourly Insight",
+      "name": "International Playing Group - Morning Wakeup",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "International Playing Group - Nightly Summary",
       "schedule": "cron",
       "enabled": true,
       "sessionTarget": "isolated",
@@ -282,7 +345,147 @@
       "nextRun": "N/A"
     },
     {
+      "name": "International Fundraising Group - Hourly Insight",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Bot Message Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Bot Registration Scanner",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Session Health Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "session-monitor",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Git Auto-Commit",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "media-ready-check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Teaching Quality - Daily Review",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Learning Group - Daily Insights",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Fundraising - Evening Report",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Dashboard Auto-Update",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "GitHub Pages Update - Morning",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "GitHub Pages Update - Afternoon",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "GitHub Pages Update - Evening",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "moltbook-update",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Call Recording Check",
+      "schedule": "every",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "User Pattern Analysis",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "Learning Group - Weekly Summary",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
       "name": "Auto-create daily memory file",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "למידה עצמית - לילה",
+      "schedule": "cron",
+      "enabled": true,
+      "sessionTarget": "isolated",
+      "nextRun": "N/A"
+    },
+    {
+      "name": "morning-briefing",
       "schedule": "cron",
       "enabled": true,
       "sessionTarget": "isolated",

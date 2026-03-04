@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-04T10:50:22.680Z",
-  "total": 153,
-  "active": 88,
+  "timestamp": "2026-03-04T11:34:44.085Z",
+  "total": 146,
+  "active": 83,
   "groups": 0,
   "dms": 0,
-  "crons": 79,
+  "crons": 72,
   "topSessions": [
     {
       "name": "Cron: למידה עצמית - לילה",
@@ -30,13 +30,13 @@
       "name": "whatsapp:g-clawders",
       "tokens": 47992,
       "channel": "whatsapp",
-      "updated": "Mar 3, 10:32 PM"
+      "updated": "Mar 4, 01:13 PM"
     },
     {
       "name": "whatsapp",
       "tokens": 47126,
       "channel": "whatsapp",
-      "updated": "Mar 4, 12:00 PM"
+      "updated": "Mar 4, 01:00 PM"
     },
     {
       "name": "whatsapp",
@@ -55,9 +55,10 @@
       "updated": "Mar 3, 10:00 PM"
     },
     {
-      "name": "Cron: morning-briefing",
-      "tokens": 43688,
-      "updated": "Mar 4, 06:30 AM"
+      "name": "whatsapp:g-fundraising-with-alexbot",
+      "tokens": 44053,
+      "channel": "whatsapp",
+      "updated": "Mar 4, 01:32 PM"
     }
   ]
 }
