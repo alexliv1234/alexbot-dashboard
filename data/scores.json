@@ -1,48 +1,5 @@
 {
-  "timestamp": "2026-03-04T07:50:09.833Z",
+  "timestamp": "2026-03-04T08:20:10.465Z",
   "date": "2026-03-04",
-  "players": [
-    {
-      "name": "Niv Ninburg",
-      "phone": "+********1212",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Efi P",
-      "phone": "+********5001",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": ".",
-      "phone": "+********3377",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "נחמיה ר",
-      "phone": "+********4492",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Bar Harel",
-      "phone": "+********4044",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    },
-    {
-      "name": "Avi Vaisenberger",
-      "phone": "+********6550",
-      "total": 0,
-      "messageCount": 0,
-      "avgScore": 0
-    }
-  ]
+  "players": []
 }
