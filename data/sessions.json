@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-04T08:20:10.465Z",
+  "timestamp": "2026-03-04T08:50:11.210Z",
   "total": 149,
   "active": 82,
   "groups": 0,
@@ -39,11 +39,6 @@
       "updated": "Mar 4, 09:57 AM"
     },
     {
-      "name": "Cron: media-ready-check",
-      "tokens": 46889,
-      "updated": "Mar 4, 10:07 AM"
-    },
-    {
       "name": "whatsapp",
       "tokens": 46451,
       "channel": "whatsapp",
@@ -58,6 +53,11 @@
       "name": "Cron: Teaching Quality - Daily Review",
       "tokens": 44604,
       "updated": "Mar 3, 10:00 PM"
+    },
+    {
+      "name": "Cron: morning-briefing",
+      "tokens": 43688,
+      "updated": "Mar 4, 06:30 AM"
     }
   ]
 }
