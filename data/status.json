@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-03-04T06:52:55.242Z",
+  "timestamp": "2026-03-04T07:21:29.865Z",
   "online": true,
   "model": "claude-sonnet-4-5",
   "startTime": "2026-01-31T00:00:00Z",
-  "tokensToday": 2612202,
-  "costToday": "7.8366",
-  "activeSessions": 84,
-  "totalSessions": 149,
+  "tokensToday": 2890485,
+  "costToday": "8.6715",
+  "activeSessions": 94,
+  "totalSessions": 160,
   "sessionBreakdown": {
     "groups": 0,
     "dms": 0,
-    "crons": 76
+    "crons": 86
   },
   "activeAgents": 3,
-  "lastExport": "08:52 AM",
+  "lastExport": "09:21 AM",
   "recentActivity": [
     {
-      "timestamp": "2026-03-04T06:52:55.242Z",
+      "timestamp": "2026-03-04T07:21:29.865Z",
       "event": "Dashboard data exported"
     }
   ]
