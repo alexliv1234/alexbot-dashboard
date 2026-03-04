@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-04T06:20:09.324Z",
+  "timestamp": "2026-03-04T06:52:55.242Z",
   "total": 149,
   "active": 84,
   "groups": 0,
@@ -8,8 +8,8 @@
   "topSessions": [
     {
       "name": "Unknown",
-      "tokens": 49396,
-      "updated": "Mar 4, 08:15 AM"
+      "tokens": 62827,
+      "updated": "Mar 4, 08:52 AM"
     },
     {
       "name": "Cron: למידה עצמית - לילה",
@@ -20,16 +20,6 @@
       "name": "Cron: למידה עצמית - לילה",
       "tokens": 49114,
       "updated": "Mar 4, 02:00 AM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 48570,
-      "updated": "Mar 4, 08:07 AM"
-    },
-    {
-      "name": "Cron: media-ready-check",
-      "tokens": 48075,
-      "updated": "Mar 4, 07:47 AM"
     },
     {
       "name": "Cron: Playing Group - Nightly Summary",
@@ -58,6 +48,16 @@
       "tokens": 46451,
       "channel": "whatsapp",
       "updated": "Mar 3, 02:56 PM"
+    },
+    {
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 44604,
+      "updated": "Mar 3, 10:00 PM"
+    },
+    {
+      "name": "Cron: Teaching Quality - Daily Review",
+      "tokens": 44604,
+      "updated": "Mar 3, 10:00 PM"
     }
   ]
 }
