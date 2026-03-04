@@ -1,5 +1,13 @@
 {
-  "timestamp": "2026-03-04T08:50:11.210Z",
+  "timestamp": "2026-03-04T09:20:20.699Z",
   "date": "2026-03-04",
-  "players": []
+  "players": [
+    {
+      "name": "Niv Ninburg",
+      "phone": "+********1212",
+      "total": 0,
+      "messageCount": 0,
+      "avgScore": 0
+    }
+  ]
 }
